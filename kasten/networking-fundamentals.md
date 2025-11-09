@@ -36,15 +36,21 @@ Tags : [[networking]], [[linux]]
 - Network layer is implemented by networking devices such as routers and switches
 - Protocols - IP(Internet Protocol), ICMP (Internet Control Message Protocol)
 ### Layer 4 : Transport Layer
-- The transport layer provides services to the application layer and takes services from the network layer. The data in this layer is referred to as Segments
-- It is responsible for the end to end delivery of the complete message
+- It is responsible for the end to end delivery of the complete message (reliability of communication) through flow-control and error control
+- Data from session layer is divided into units called segments. Each segment has a port number and sequence number.
+- Port number is used to direct each segment to the correct application/service
+- Sequence number is used to arrange the segments into the correct order to form a correct message at the receiver.
+- Transport layer helps in flow-control i.e it helps in controlling the amount of data being transmitted.
+- Transport layer also helps in error-control i.e if some data fails to reach the destination, transport layer uses Automatic Repeat Request schemes to retransmit the lost or corrupted data.
 - It also adds source and destination port number in its header
-- Protocols - TCP (Transmission Control Protocol), UDP (User Datagram Protocol)
+- Protocols - TCP (Transmission Control Protocol)(connection-oriented transmission), UDP (User Datagram Protocol)(connectionless transmission)
 ### Layer 5 : Session Layer
 - This layer is responsible for the establishment of connections, management of connections, termination of sessions between 2 devices. It also provides authentication and security
 ### Layer 6 : Presentation Layer
 - Also called the translation layer. The data from the application layer is extracted here and manipulated as per the required format to transmit over the network.
-- Protocols used here are TLS/SSL
+- After translation, data can be compressed so that it is transmitted effectively
+- After compression, data is encrypted for security.
+- Protocols used here are TLS/SSL for encryption.
 ### Layer 7 : Application Layer
 - Provides the interface for applications to access network services.
 - Protocols: HTTP, HTTPS, FTP, SMTP, DNS
