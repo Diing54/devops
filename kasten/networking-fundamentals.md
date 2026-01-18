@@ -85,7 +85,24 @@ Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Pr
 | 443         | HTTP Secure(HTTPS)                       |
 
 ### Subnetting
-- This is the process of dividing a large network into smaller, more manageable subnetworks.  
+- This is the process of dividing a large network into smaller, more manageable subnetworks.
+- Every IP address e.g 192.168.1.10 has 2 parts;
+1. Network ID
+2. Host ID
+- The subnet mask is the line that separates them.
+- An example : 192.168.1.10/24 
+- The IP is 192.168.1.10 while the mask is /24 or 255.255.255.0
+- The mask /24 means that the first 24 bits (the first 3 numbers) belong to the network ID; 192.168.1. This means that only devices that have their IP addresses starting with 192.168.1 can talk directly with each other.
+- The remaining .10 belong to the host ID. This is the host device.
+- If a raspberry Pi is 192.168.1.50, it has the same network ID and it can communicate directly. On the other hand, if a server is 192.168.2.50, it has a different network ID and a router(Gateway) is needed for communication.
+- CIDR notation = /24.
+- /32(One device) - Only fits 1 IP
+- /24(Standard LAN) - 256 IPs but we remove the first(Network ID) and last(broadcast) so it fits 254 devices
+- /16(Huge Network) - fits 65,534 devices
+- /0(The Internet) - 0.0.0.0/0
+- The larger the number after /, the smaller the network. Every time we increase the number by one, /25 we split the previous number of devices by half 256/2, so /25 wil fit 128 IPs.
+
+
 
 ## References
 1. https://www.geeksforgeeks.org/computer-networks/open-systems-interconnection-model-osi/
