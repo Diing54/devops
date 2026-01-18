@@ -3,4 +3,4 @@ This repository contains my notes, summaries, and experiences as I learn a varie
 
 ## Linux Roadmap
 
-![linux](Excalidraw/linux.excalidraw)
+![linux](Excalidraw/linux.svg)
