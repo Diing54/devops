@@ -97,10 +97,24 @@ Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Pr
 - If a raspberry Pi is 192.168.1.50, it has the same network ID and it can communicate directly. On the other hand, if a server is 192.168.2.50, it has a different network ID and a router(Gateway) is needed for communication.
 - CIDR notation = /24.
 - /32(One device) - Only fits 1 IP
-- /24(Standard LAN) - 256 IPs but we remove the first(Network ID) and last(broadcast) so it fits 254 devices
+- /24(Standard LAN) - 256 IPs but we remove the first(Network ID) and last(broadcast) so it fits 254 devices. The broadcast is the speacial IP address used to send a packet to all of the devices in a particular network segment.
 - /16(Huge Network) - fits 65,534 devices
 - /0(The Internet) - 0.0.0.0/0
 - The larger the number after /, the smaller the network. Every time we increase the number by one, /25 we split the previous number of devices by half 256/2, so /25 wil fit 128 IPs.
+
+### Switches and routers
+
+- A **switch** connects devices that are on the same network. It creates a Local Network (LAN).For example, it lets my laptop communicate with the raspberry PI or my phone to the printer.
+
+- It does not care about IP addresses. It uses MAC addresses to identify devices on the LAN.
+
+-It operates on the data link layer.
+
+- A **Router** connects different networks, a private home network to the public internet.
+
+- It uses IP addresses to operate. For example when browsing through the internet from a laptop.
+
+- 
 
 
 
