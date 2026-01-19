@@ -108,14 +108,11 @@ Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Pr
 
 - It does not care about IP addresses. It uses MAC addresses to identify devices on the LAN.
 
--It operates on the data link layer.
+- It operates on the data link layer.
 
 - A **Router** connects different networks, a private home network to the public internet.
 
 - It uses IP addresses to operate. For example when browsing through the internet from a laptop.
-
-- 
-
 
 
 ## References
