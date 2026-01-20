@@ -114,6 +114,21 @@ Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Pr
 
 - It uses IP addresses to operate. For example when browsing through the internet from a laptop.
 
+### Routing
+
+- This is the process of directing data packets from source to destination across a network. They use routing tables and protocols to decide the path for data transmission ensuring efficient and reliable communication between devices.
+
+### How does routing work ?
+
+- Data moves along any network in form of data packets. Each data packet has a header that contains information about the packet's intended destination. As a packet travels to its destination, several routers might route it multiple times. Routers perform this process millions of times each second with other millions of packets.
+
+- When a data packet arrives, the router first checks its address in the routing table, the router then forwards the packet on to the next point in the network.
+
+### types of routing
+
+1. Static routing - A network administrator manually configures and selects network routes.
+
+2. Dynamic routing - Routers create and update routing tables at runtime based on actual network conditions. They attempt to find the fastest path from the source to the destination by using a dynamic routing protocol, which is a set of rules that create, maintain and update the dynamic routing table. Its biggest advantage is that it adapts to changing network conditions e.g. traffic volume, bandwidth and network failure.
 
 ## References
 1. https://www.geeksforgeeks.org/computer-networks/open-systems-interconnection-model-osi/
