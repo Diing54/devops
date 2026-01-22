@@ -10,7 +10,7 @@ theme = "github.com/imfing/hextra"
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
-# This section fixes the "Raw HTML" warning
+# Allow raw HTML (fixes the warning you saw)
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
@@ -24,12 +24,15 @@ theme = "github.com/imfing/hextra"
     weight = 1
 
 [params]
-  footer = false 
+  # FIXED: Footer must be a section, not a boolean
+  [params.footer]
+    enable = false 
 
-  # FIXED: navbar is now a section, not a boolean
+  # FIXED: Navbar must be a section
   [params.navbar]
     displayTitle = true
     displayLogo = true
+    width = "normal"
 
   [params.search]
     enable = true
