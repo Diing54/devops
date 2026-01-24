@@ -1,11 +1,12 @@
 baseURL = 'https://Diing54.github.io/devops/'
-title = "Diing's Tech Yard"
+title = "Diing"
 theme = ["github.com/imfing/hextra"]
 
 [params]
-  description = "DevOps Engine Room"
-  # This array ensures our CSS overrides the theme defaults
-  customCSS = ["css/custom.css"]
+  description = "My Kasten"
+  # Use the absolute path starting with /
+  # Hugo will automatically prepend the 'devops' prefix during build
+  customCSS = ["/css/custom.css"]
 
 [markup.goldmark.renderer]
   unsafe = true
