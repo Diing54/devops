@@ -1,13 +1,15 @@
+---
+title: "linux-file-system"
+date: 2026-01-23
+tags: ["linux"]
+---
 
-2025-02-15 18:08
+*Date: 2026-01-23*
+{{< tags >}}
 
-Level : #child 
+## Intro
 
-Tags : [[linux]]
-
-# Filesystems in linux
-
-"You see, back then, Linux was not the intuitive, user-friendly system it is today. You had to read a lot. You had to know things about the frequency rate of your CRT monitor and the ins and outs of your noisy dial-up modem, among hundreds of other things. I soon realized I would need to spend some time getting a handle on how the directories were organized and what all their exotic names like _/etc_ (not for miscellaneous files), _/usr_ (not for user files), and _/___bin__ (not a trash can) meant." ~ Paul Brown
+"You see, back then, Linux was not the intuitive, user-friendly system it is today. You had to read a lot. You had to know things about the frequency rate of your CRT monitor and the ins and outs of your noisy dial-up modem, among hundreds of other things. I soon realized I would need to spend some time getting a handle on how the directories were organized and what all their exotic names like _/etc_ (not for miscellaneous files), _/usr_ (not for user files), and _/___bin__ (not a trash can) meant." ~ Paul Brown.
 
 / - This is the root directory
 
@@ -43,19 +45,17 @@ Tags : [[linux]]
 ## /usr
 - Back in the days, this was where users' home directories were originally kept
 - These days it contains directories of applications, libraries, documentation, wallpapers, icons and other stuff to be shared by applications and services
-- Contains bin, sbin and lib directorries as well. Originally, the _/bin_ directory (hanging off of root) would contain very basic commands, like `ls`, `mv` and `rm`; the kind of commands that would come pre-installed in all UNIX/Linux installations, the bare minimum to run and maintain a system. _/usr/bin_ on the other hand would contain stuff the users would install and run to use the system as a work station, things like word processors, web browsers, and other apps.
-- But many modern Linux distributions just put everything into _/usr/bin_ and have _/bin_ point to _/usr/bin_ just in case erasing it completely would break something.
+- Contains bin, sbin and lib directorries as well. Originally, the _/bin_ directory (hanging off of root) would contain very basic commands, like `ls`, `mv` and `rm`; the kind of commands that would come pre-installed in all UNIX/Linux installations, the bare minimum to run and maintain a system. _/usr/bin_ on the other hand would contain stuff the users would install and run to use the system as a work station, things like word processors, web browsers, and other apps.
+- But many modern Linux distributions just put everything into _/usr/bin_ and have _/bin_ point to _/usr/bin_ just in case erasing it completely would break something.
 ## /srv
-- Contains data for servers eg a web server, HTML files would be stored at _/srv/http_ (or _/srv/www_). If ruuning a FTP server, the files will be stored at /srv/ftp
+- Contains data for servers eg a web server, HTML files would be stored at _/srv/http_ (or _/srv/www_). If ruuning a FTP server, the files will be stored at /srv/ftp
 ## /sys
 - This is another virtual directory like /proc and /dev, it also contains information from devices connected to the computer
 ## /tmp
 - Contains temporary files from applications running in the system
 - You can also use it to store your own temporary files 
 ## /var
-- Contains var/log subdirectories, logs are files that register events that happen on the system.  If something fails in the kernel, it will be logged in a file in _/var/log_; if someone tries to break into your computer from outside, your firewall will also log the attempt here. It also contains _spools_ for tasks.These “tasks” can be the jobs you send to a shared printer when you have to wait because another user is printing a long document, or mail that is waiting to be delivered to users on the system.
-
+- Contains var/log subdirectories, logs are files that register events that happen on the system.  If something fails in the kernel, it will be logged in a file in _/var/log_; if someone tries to break into your computer from outside, your firewall will also log the attempt here. It also contains _spools_ for tasks.These “tasks” can be the jobs you send to a shared printer when you have to wait because another user is printing a long document, or mail that is waiting to be delivered to users on the system.
 
 ## References
-
-1. https://www.linuxfoundation.org/blog/blog/classic-sysadmin-the-linux-filesystem-explained
+- https://www.linuxfoundation.org/blog/blog/classic-sysadmin-the-linux-filesystem-explained

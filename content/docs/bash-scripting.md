@@ -1,24 +1,25 @@
- 
-2025-02-15 15:14
+---
+title: "bash-scripting"
+date: 2026-01-23
+tags: ["linux","automation"]
+---
 
-Level : #baby
+*Date: 2026-01-23*
+{{< tags >}}
 
-Tags : [[linux]]
+## Intro
+- A bash script is a file containing lines of code either simple commands or complex ones tha can either navigate directories or create other stuff; in simple words they can do a series of actions. Basically they can run bash commands eg ls , mkdir, ps, grep ,touch ,rm etc.
+- A bash script can be executed and the lines of code inside it will be run line by line.
 
-# Bash Scripting
-
-# Intro
-A bash script is a file containing lines of code either simple commands or complex ones that can either navigate directories or create other stuff ; in simple words they can do a series of actions. Basically they can run bash commands eg ls , mkdir, ps, grep ,touch ,rm etc. A bash script can be executed and the lines of code inside it will be run line by line.
-
-
-# Advantages of bash scripting 
+## Advantages of bash scripting 
 1. Automation - Shell scripts allow a user to automate repetitive tasks hence saving on time and minimizing the risk of human error
 2. Portability -  Can run on various OS including windows through VM's
 3. HIghly flexible as they can be customized easily
 4. Easy to write as they require any special software
 5. Integration - Shell scripts can be integrated with other tools and applications and cloud services allowing for more complex automation and system management tasks
 6. Debugging - They are easy to debug and most of them have built-in debugging and error-reporting tools
-- NOTE : Shell is a program responsible for displaying of an interface for interacting the OS(CLI- Command Line Interface). Bash is a type of shell
+- NOTE : Shell is a program responsible for displaying of an interface for interacting the OS(CLI- Command Line Interface). Bash is a type of shell.
+
 ## Creating and executing bash scripts
 - Bash scripts end with .sh
 - A bash script starts with a shebang. This is the first line which must be present in a script which specifies the interpreter that will be used when executing the script. This allows users to leverage the power of different interpreters. Shebang tells the shell to execute it via bash shell
@@ -26,20 +27,15 @@ A bash script is a file containing lines of code either simple commands or compl
 - The script files also need to have the execute permission to allow them to run
 - An example of a shebang statement (#!/bin/bash)
 - ![image](https://github.com/user-attachments/assets/9569a3c0-9d0a-4b2a-9eb8-dcd8af079d8c)
-
-
-
-
-
 - The read command reads the input and stores it in the variable path
 - The ls -al command takes the variable with the stored path and displays the details of the path
 - We can then run the script using the following commands :
 1. sh hello.sh
 2. bash hello.sh - These commands(sh hello.sh) must be specified with the directory of the bash script if not in the bash script directory
 3. ./hello.sh - ./ tells the bash to execute hello.sh in the current working directory. We can use hello.sh to execute the bash script while on any directory of the terminal if the path of the script file is added to the $PATH variable
-4. . hello.sh 
-     When a script is executed using either the bash command or the dot (.) command, you do not have to set executable
-permissions on script but read permissions need to be set.
+4. . hello.sh
+- When a script is executed using either the bash command or the dot (.) command, you do not have to set executable permissions on script but read permissions need to be set.
+
 ## Variables and data types 
 - Variables store data which can be read, accessed and manipulated eg : name=John
 - We can also set a variable to a path of a particular directory as shown below
@@ -61,16 +57,13 @@ permissions on script but read permissions need to be set.
      - $USER - The username of the user running the script
      - $HOSTNAME - The hostname of the machine the script is running on.
 - Example showcasing command line arguments:
+
   ![image](https://github.com/user-attachments/assets/f7eed79e-a831-4839-b5fb-fd7b392a16b1)
 
   ![image](https://github.com/user-attachments/assets/c78722de-96a5-4b14-82c3-723f6fa77d19)
 
   ![image](https://github.com/user-attachments/assets/335dda0c-1c25-4217-8a55-29e7fc022d26)
 
-  
-
-     
-     
 ## Quotes
 - We use quotes to enclose the values being assigned to a variable if we are working with complex values or values with spaces between. If we dont use quotes eg var=Hello World, there will be an error because by default, bash uses space for separate items.
 - Commands work in the same way in the command line as they work in a script so we can just work in the command line for easier demonstration.
@@ -84,19 +77,19 @@ This allows us to take the output of a command or program and save it as a value
 ![Screenshot_2025-04-14_18-23-51](https://github.com/user-attachments/assets/a589920f-453b-4ce9-8c92-368e836fb924)
 
 ## Exporting Variables
-When you run a shell script e.g. bash hello.sh, it starts a new  process that is separate from the shell you are currently in. Its like opening a new mini terminal behind the scenes to run that script.
-Each process in Linux has its own memory - and variables live in memory - so a variable in your current shell won't automatically be visible to that new process.
-"Variables are limited to the process they were created in".
+- When you run a shell script e.g. bash hello.sh, it starts a new  process that is separate from the shell you are currently in. Its like opening a new mini terminal behind the scenes to run that script.
+- Each process in Linux has its own memory - and variables live in memory - so a variable in your current shell won't automatically be visible to that new process.
+- "Variables are limited to the process they were created in".
 ### Example
 ##### script1.sh
-myname="Chiman"
-bash script2.sh
+- myname="Chiman"
+- bash script2.sh
 ##### script2.sh
-echo "Hello $myname"
-When you run `script1.sh`, it starts a new process (`script2.sh`). But unless `myname` is **exported**, `script2.sh` will print nothing because it doesn't know `myname` exists.
-To solve this problem we need to export the variable; 
-export myname="Chiman"
-bash script2.sh
+- echo "Hello $myname"
+- When you run `script1.sh`, it starts a new process (`script2.sh`). But unless `myname` is **exported**, `script2.sh` will print nothing because it doesn't know `myname` exists.
+- To solve this problem we need to export the variable; 
+- export myname="Chiman"
+- bash script2.sh
 
 ## Input
 The read command takes user input and saves it into a variable.
@@ -141,16 +134,20 @@ let "a = $1 + 30" # Use a command-line argument
 | `var--`  | Decrement by 1                      |
 ### expr - Print results and does not store
 
-expr item1 operator item2
+- expr item1 operator item2
 
-expr 5 + 4        # Outputs: 9
-expr "5 + 4"      # Wrong: Just prints the string
-expr 5+4          # Wrong: No spaces = no evaluation
-expr 5 \ * 4       # Right: Use \ * to escape the multiplication symbol
-expr 11 % 2       # Outputs: 1
+expr 5 + 4 ---> Outputs: 9
 
-a=$(expr 10 - 3)  # Store result into variable a
-echo $a           # 7
+expr "5 + 4" ---> Wrong: Just prints the string
+
+expr 5+4 ---> Wrong: No spaces = no evaluation
+
+expr 5 \ * 4 ---> Right: Use \ * to escape the multiplication symbol
+
+expr 11 % 2 ---> Outputs: 1
+
+a=$(expr 10 - 3) ---> Store result into variable a
+echo $a ---> 7
 
 ### ((  )) - Recommended way to do arithmetic
 
@@ -214,19 +211,27 @@ date
 In `[ $1 -gt 100 ]`, the square brackets `[` `]` are a way to call the `test` command.
 Common test operators;
 ! EXPRESSION | Not true
+
 -n STRING | String is not empty
+
 -z STRING | String is empty
+
 STRING1 = STRING2 | Strings are equal
+
 STRING1 != STRING2 | Strings are not equal
+
 INT1 -eq INT2 | Equal numbers
+
 INT1 -gt INT2 | Greater than
+
 -e FILE | File exists
+
 -s FILE | File exists and is not empty
+
 -x FILE | File exists and is executable
 
-
-
 ## References
- Bash scripting by freecodecamp (https://www.freecodecamp.org/news/bash-scripting-tutorial-linux-shell-script-and-command-line-for-beginners/)
 
-  https://ryanstutorials.net/bash-scripting-tutorial/
+- https://www.freecodecamp.org/news/bash-scripting-tutorial-linux-shell-script-and-command-line-for-beginners/
+- https://ryanstutorials.net/bash-scripting-tutorial/
+

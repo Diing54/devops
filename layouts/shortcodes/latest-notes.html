@@ -1,0 +1,16 @@
+<div class="notes-container">
+  {{ range first 5 (sort (where .Site.RegularPages "Section" "docs") "Date" "desc") }}
+    <a href="{{ .RelPermalink }}" class="note-strip">
+      <h3>{{ .Title }}</h3>
+      <div class="note-preview">
+        {{ $content := split .RawContent "Intro" }}
+        {{ if gt (len $content) 1 }}
+          {{ index $content 1 | plainify | safeHTML | truncate 220 }}
+        {{ else }}
+          {{ .Summary | plainify | safeHTML | truncate 220 }}
+        {{ end }}
+      </div>
+      <div class="note-footer">LAST UPDATED ON // {{ .Date.Format "02 Jan 2006" }}</div>
+    </a>
+  {{ end }}
+</div>

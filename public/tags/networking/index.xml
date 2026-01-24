@@ -1,0 +1,307 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Diing&#39;s Tech Yard – Networking</title>
+    <link>//:1313/tags/networking/</link>
+    <description>Recent content in Networking on Diing&#39;s Tech Yard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 23 Jan 2026 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="//:1313/tags/networking/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>networking-fundamentals</title>
+      <link>//:1313/docs/networking-fundamentals/</link>
+      <pubDate>Fri, 23 Jan 2026 00:00:00 +0000</pubDate>
+      
+      <guid>//:1313/docs/networking-fundamentals/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;em&gt;Date: 2026-01-23&lt;/em&gt;
+&lt;div class=&#34;hx-flex hx-flex-wrap hx-gap-2 hx-mt-4&#34;&gt;
+  
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Intro&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;intro&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#intro&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h2&gt;The OSI (Open Systems Interconnection) Model&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;the-osi-open-systems-interconnection-model&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#the-osi-open-systems-interconnection-model&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;The osi model is a conceptual framework that describes seven distinct layers of network communication. It  helps us to understand how different technologies work together to enable a network.&lt;/li&gt;
+&lt;li&gt;Its basically a set of rules that explains how different computer systems communicate over a network.&lt;/li&gt;
+&lt;li&gt;It consists of 7 layers and each layer has specific functions and responsibilities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Layer 1 : Physical Layer&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;layer-1--physical-layer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#layer-1--physical-layer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;The lowest layer of the OSI model&lt;/li&gt;
+&lt;li&gt;Responsible for the actual physical connection between devices&lt;/li&gt;
+&lt;li&gt;Contains information in the form of bits and transmits them from one node to the next (0s and 1s)&lt;/li&gt;
+&lt;li&gt;When receiving data, this layer will get the signal received and convert it to 0s and 1s and send them to the DLL&lt;/li&gt;
+&lt;li&gt;Common physical layer devices are hub, repeater and cables&lt;/li&gt;
+&lt;li&gt;Physical layer specifies how the different devices are arranged in a network i.e. bus topology, star topology or mesh topology&lt;/li&gt;
+&lt;li&gt;This layer also defines how the data flows between two connected devices e.g simples, half duplex and full duplex&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Layer 2 : Data Link Layer (DLL)&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;layer-2--data-link-layer-dll&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#layer-2--data-link-layer-dll&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Responsible for the node to node delivery of the message&lt;/li&gt;
+&lt;li&gt;The main function is to make sure data transfer is error-free from one node to another over the physical layer&lt;/li&gt;
+&lt;li&gt;When a packet arrives in a network, it is the responsiblity of the DLL to transmit it to the host using its MAC address.&lt;/li&gt;
+&lt;li&gt;Switches and bridges are the common DLL devices&lt;/li&gt;
+&lt;li&gt;Packet in the DLL is referred to as Frame&lt;/li&gt;
+&lt;li&gt;DLL also encapsulates the sender&amp;rsquo;s and receiver&amp;rsquo;s MAC address in the header&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Layer 3 : Network Layer&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;layer-3--network-layer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#layer-3--network-layer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;The network layer is responsible for the transmission of data from one host to the other located in different networks.&lt;/li&gt;
+&lt;li&gt;It also takes care of packet routing i.e. selection of the shortest path to transmit the packet from the number of routes available&lt;/li&gt;
+&lt;li&gt;The sender&amp;rsquo;s and receiver&amp;rsquo;s IP address are placed in the header by the network layer&lt;/li&gt;
+&lt;li&gt;Network layer is implemented by networking devices such as routers and switches&lt;/li&gt;
+&lt;li&gt;Protocols - IP(Internet Protocol), ICMP (Internet Control Message Protocol)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Layer 4 : Transport Layer&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;layer-4--transport-layer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#layer-4--transport-layer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;It is responsible for the end to end delivery of the complete message (reliability of communication) through flow-control and error control&lt;/li&gt;
+&lt;li&gt;Data from session layer is divided into units called segments. Each segment has a port number and sequence number.&lt;/li&gt;
+&lt;li&gt;Port number is used to direct each segment to the correct application/service&lt;/li&gt;
+&lt;li&gt;Sequence number is used to arrange the segments into the correct order to form a correct message at the receiver.&lt;/li&gt;
+&lt;li&gt;Transport layer helps in flow-control i.e it helps in controlling the amount of data being transmitted.&lt;/li&gt;
+&lt;li&gt;Transport layer also helps in error-control i.e if some data fails to reach the destination, transport layer uses Automatic Repeat Request schemes to retransmit the lost or corrupted data.&lt;/li&gt;
+&lt;li&gt;It also adds source and destination port number in its header&lt;/li&gt;
+&lt;li&gt;Protocols - TCP (Transmission Control Protocol)(connection-oriented transmission), UDP (User Datagram Protocol)(connectionless transmission)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Layer 5 : Session Layer&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;layer-5--session-layer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#layer-5--session-layer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;This layer is responsible for the establishment of connections, management of connections, termination of sessions between 2 devices. It also provides authentication and security&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Layer 6 : Presentation Layer&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;layer-6--presentation-layer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#layer-6--presentation-layer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Also called the translation layer. The data from the application layer is extracted here and manipulated as per the required format to transmit over the network.&lt;/li&gt;
+&lt;li&gt;After translation, data can be compressed so that it is transmitted effectively&lt;/li&gt;
+&lt;li&gt;After compression, data is encrypted for security.&lt;/li&gt;
+&lt;li&gt;Protocols used here are TLS/SSL for encryption.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Layer 7 : Application Layer&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;layer-7--application-layer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#layer-7--application-layer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Provides the interface for applications to access network services.&lt;/li&gt;
+&lt;li&gt;Protocols: HTTP, HTTPS, FTP, SMTP, DNS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Analogy&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;analogy&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#analogy&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Step 1: Person A interacts with e-mail application like Gmail, outlook, etc. Writes his email to send. (This happens at Application Layer).&lt;/li&gt;
+&lt;li&gt;Step 2: At Presentation Layer,Mail application prepares for data transmission like encrypting data and formatting it for transmission.&lt;/li&gt;
+&lt;li&gt;Step 3: At Session Layer there is a connection established between the sender and receiver on the internet.&lt;/li&gt;
+&lt;li&gt;Step 4: At Transport Layer, Email data is broken into smaller segments. It adds sequence number and error-checking information to maintain the reliability of the information.&lt;/li&gt;
+&lt;li&gt;Step 5: At Network Layer, addressing of packets is done in order to find the best route for transfer.&lt;/li&gt;
+&lt;li&gt;Step 6: At Data Link Layer, data packets are encapsulated into frames, then MAC address is added for local devices and then it checks for error using error detection.&lt;/li&gt;
+&lt;li&gt;Step 7: At Physical Layer, Frames are transmitted in the form of electrical/ optical signals over a physical network medium like ethernet cable or WiFi.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Ports&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;ports&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#ports&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;These are communication endpoints that allow different services on a device to send and receive data. Each port is associated with a specific service or process.The use of ports helps computers understand what to do with the data they receive.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Protocol (FTP). If Alice&amp;rsquo;s computer passed the MP3 file data to Alice&amp;rsquo;s email application, the email application would not know how to interpret it. But because Bob&amp;rsquo;s file transfer uses the port designated for FTP (port 21), Alice&amp;rsquo;s computer is able to receive and store the file.&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Port Number&lt;/th&gt;
+          &lt;th&gt;Service&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;20&lt;/td&gt;
+          &lt;td&gt;File Transfer Protocol&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;21&lt;/td&gt;
+          &lt;td&gt;File Transfer Protocol&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;22&lt;/td&gt;
+          &lt;td&gt;Secure Shell (SSH) Secure login&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;23&lt;/td&gt;
+          &lt;td&gt;Telnet Remote Login&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;25&lt;/td&gt;
+          &lt;td&gt;Simple Mail Transfer Protocol (SMTP)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;53&lt;/td&gt;
+          &lt;td&gt;Domain Name System (DNS) Service&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;80&lt;/td&gt;
+          &lt;td&gt;Hypertext Transfer Protocol (HTTP)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;110&lt;/td&gt;
+          &lt;td&gt;Post Office Protocol(POP3)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;123&lt;/td&gt;
+          &lt;td&gt;Network Time Protocol (NTP)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;143&lt;/td&gt;
+          &lt;td&gt;Internet Message Access Protocol(IMAP)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;161&lt;/td&gt;
+          &lt;td&gt;Simple Network Management Protocol(SNMP)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;443&lt;/td&gt;
+          &lt;td&gt;HTTP Secure(HTTPS)&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;Subnetting&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;subnetting&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#subnetting&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;This is the process of dividing a large network into smaller, more manageable subnetworks.&lt;/li&gt;
+&lt;li&gt;Every IP address e.g 192.168.1.10 has 2 parts;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;Network ID&lt;/li&gt;
+&lt;li&gt;Host ID&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;The subnet mask is the line that separates them.&lt;/li&gt;
+&lt;li&gt;An example : 192.168.1.10/24&lt;/li&gt;
+&lt;li&gt;The IP is 192.168.1.10 while the mask is /24 or 255.255.255.0&lt;/li&gt;
+&lt;li&gt;The mask /24 means that the first 24 bits (the first 3 numbers) belong to the network ID; 192.168.1. This means that only devices that have their IP addresses starting with 192.168.1 can talk directly with each other.&lt;/li&gt;
+&lt;li&gt;The remaining .10 belong to the host ID. This is the host device.&lt;/li&gt;
+&lt;li&gt;If a raspberry Pi is 192.168.1.50, it has the same network ID and it can communicate directly. On the other hand, if a server is 192.168.2.50, it has a different network ID and a router(Gateway) is needed for communication.&lt;/li&gt;
+&lt;li&gt;CIDR notation = /24.&lt;/li&gt;
+&lt;li&gt;/32(One device) - Only fits 1 IP&lt;/li&gt;
+&lt;li&gt;/24(Standard LAN) - 256 IPs but we remove the first(Network ID) and last(broadcast) so it fits 254 devices. The broadcast is the speacial IP address used to send a packet to all of the devices in a particular network segment.&lt;/li&gt;
+&lt;li&gt;/16(Huge Network) - fits 65,534 devices&lt;/li&gt;
+&lt;li&gt;/0(The Internet) - 0.0.0.0/0&lt;/li&gt;
+&lt;li&gt;The larger the number after /, the smaller the network. Every time we increase the number by one, /25 we split the previous number of devices by half 256/2, so /25 wil fit 128 IPs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Switches and routers&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;switches-and-routers&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#switches-and-routers&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A &lt;strong&gt;switch&lt;/strong&gt; connects devices that are on the same network. It creates a Local Network (LAN).For example, it lets my laptop communicate with the raspberry PI or my phone to the printer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;It does not care about IP addresses. It uses MAC addresses to identify devices on the LAN.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;It operates on the data link layer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A &lt;strong&gt;Router&lt;/strong&gt; connects different networks, a private home network to the public internet.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;It uses IP addresses to operate. For example when browsing through the internet from a laptop.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Routing&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;routing&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#routing&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;This is the process of directing data packets from source to destination across a network. They use routing tables and protocols to decide the path for data transmission ensuring efficient and reliable communication between devices.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;How does routing work ?&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;how-does-routing-work-&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#how-does-routing-work-&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Data moves along any network in form of data packets. Each data packet has a header that contains information about the packet&amp;rsquo;s intended destination. As a packet travels to its destination, several routers might route it multiple times. Routers perform this process millions of times each second with other millions of packets.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;When a data packet arrives, the router first checks its address in the routing table, the router then forwards the packet on to the next point in the network.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;types of routing&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;types-of-routing&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#types-of-routing&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Static routing - A network administrator manually configures and selects network routes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dynamic routing - Routers create and update routing tables at runtime based on actual network conditions. They attempt to find the fastest path from the source to the destination by using a dynamic routing protocol, which is a set of rules that create, maintain and update the dynamic routing table. Its biggest advantage is that it adapts to changing network conditions e.g. traffic volume, bandwidth and network failure.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;References&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;references&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#references&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.geeksforgeeks.org/computer-networks/open-systems-interconnection-model-osi/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.geeksforgeeks.org/computer-networks/open-systems-interconnection-model-osi/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cloudflare.com/en-in/learning/network-layer/what-is-a-computer-port/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.cloudflare.com/en-in/learning/network-layer/what-is-a-computer-port/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>openssh</title>
+      <link>//:1313/docs/openssh/</link>
+      <pubDate>Fri, 23 Jan 2026 00:00:00 +0000</pubDate>
+      
+      <guid>//:1313/docs/openssh/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;em&gt;Date: 2026-01-23&lt;/em&gt;
+&lt;div class=&#34;hx-flex hx-flex-wrap hx-gap-2 hx-mt-4&#34;&gt;
+  
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Intro&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;intro&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#intro&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;OpenSSH (Open Secure Shell) is a free, open-source toolset that allows for secure remote login and other secure network services over an insecure network i.e. the internet. It encrypts all traffic during a session and guarantees the integrity of data transfer&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;sshd - The OpenSSH server daemon&lt;/li&gt;
+&lt;li&gt;ssh - Short form for secure shell, provides a secure channel to the command shell on the remote system&lt;/li&gt;
+&lt;li&gt;scp - secure copy, for encrypted file transfer&lt;/li&gt;
+&lt;li&gt;sftp - secure file transfer protocol, provides file access&lt;/li&gt;
+&lt;li&gt;ssh-copy-id - a program for installing your public key to a remote SSH server&amp;rsquo;s authorized_keys file&lt;/li&gt;
+&lt;li&gt;ssh-keyscan - finds and collects public host keys on a network, saving time of looking for them manually&lt;/li&gt;
+&lt;li&gt;ssh-add - adds your identities to the authentication agent, ssh-agent&lt;/li&gt;
+&lt;li&gt;sshfs - Allows you to mount a remote filesystem using sftp&lt;/li&gt;
+&lt;li&gt;ssh-agent - a program that securely manages and stores your SSH private keys in memory, making it easier to authenticate with remote servers without repeatedly entering passphrases. This allows you to authenticate with SSH servers once and then use that authentication for multiple connections without needing to re-enter your key&amp;rsquo;s passphrase&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;OpenSSH supports different types of authentication;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Password authentication&lt;/strong&gt; - Uses your LInux login and password to authenticate. Simplest but vulnerable when your SSH session is infected with a keylogger which can capture your credentials.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Public key authentication&lt;/strong&gt; - This authenticates with your personal SSH public keys. You need to create and distribute your public keys and you can login only from machines that hold your private key&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Passphrase-less authentication&lt;/strong&gt; - Public key authentication without a passphrase. Useful for automated services like scripts and cron jobs&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are two different uses for authentication keys: host keys, which authenticate computers, and public keys, which authenticate users. SSH keys come in pairs, private and public.
+Transmissions are encrypted with the public key and decrypted with the private key, a brilliantly simple scheme. You can safely distribute your public keys as much as you want, while you must protect your private key and not let anyone else have it.&lt;/p&gt;
+&lt;p&gt;Server and client are defined by the direction of the transaction. The server has the SSH daemon running and listening for connection requests, and the client is anyone logging in to this machine via SSH.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;sudo ssh-keygen -A&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ssh-keygen: generating new host keys: RSA DSA ECDSA ED25519&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;server’s private host keys are owned by root, read-only&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;public keys, which are owned by root, read-write for root, and read-only for everyone else&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now take a look at /etc/ssh/sshd_config. When you change this file(Uncomment the options you want to use or change.), reload sshd to load your changes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$ sudo systemctl reload sshd.server&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Any port scanner will find your open ports, and attackers will attempt brute force
+password cracking. Attackers still target the default SSH port 22 the most. Changing the port won’t reduce this risk very much, but it should reduce the number of entries in your log files. When you use alternate port numbers, first look in /etc/services to find unused ports, and then record the ports you use in this file.&lt;/p&gt;
+&lt;p&gt;Public key authentication is very strong and cannot be brute-forced like password logins (see Recipe 12.7). The trade-off is less convenience, as you can log in only from machines that have your private key.&lt;/p&gt;
+&lt;h2&gt;References&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;references&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#references&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,13 +1,13 @@
+---
+title: "{{Title}}"
+date: {{date}}
+tags: []
+---
 
-{{date}} {{time}}
+*Date: {{date}}*
+{{< tags >}}
 
-Level : 
-
-Tags :
-
-# {{Title}}
-
-
+## Intro
 
 
 ## References

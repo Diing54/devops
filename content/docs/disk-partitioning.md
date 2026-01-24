@@ -1,11 +1,13 @@
+---
+title: "disk-partitioning"
+date: 2026-01-23
+tags: ["linux"]
+---
 
-2025-02-16 17:15
+*Date: 2026-01-23*
+{{< tags >}}
 
-Level : 
-
-Tags :[[linux]]
-
-# disk partitioning
+## Intro
 
 ## Understanding Mounting
 - In simple terms, we know mounting as inserting eg a usb drive into your computer 
@@ -38,6 +40,5 @@ Tags :[[linux]]
 - Master Boot Record (MBR ) is the older partitioning system that supports up to 4 primary partitions and a maximum disk size of 2 terabytes.
 ## GUID Partition Table (GUID) partitions
 - GPT (GUID Partition Table) is the newer standard, supporting up to 128 partitions by default and larger disk sizes. GPT was designed for use with a UEFI-based system
-
 
 ## References

@@ -1,14 +1,16 @@
+---
+title: "linux-boot-process"
+date: 2026-01-23
+tags: ["linux"]
+---
 
-2025-02-16 16:51
-
-Level : 
-
-Tags :[[linux]]
-
-# linux boot process
+*Date: 2026-01-23*
+{{< tags >}}
 
 ## Intro
+
 When you turn on a computer or restart it, it must load an operating system. This process is called the boot process.
+
 ## BIOS
 In the past before transitioning into boot loaders, BIOS (Basic Input and Output Service), was being used. This was a code that was stored in a non-volatile memory such as ROM, EEPROM or flash memory. When a PC is turned on, this code is executed and performs a power on self test (POST) to check the machine. This code also determines the boot drive from the available removable/fixed storage and loads the first sector from the Master Boot Record (MBR) on that drive eg hard drive/ ssd or usb stick or DVD/CD
 
@@ -29,7 +31,5 @@ In the past before transitioning into boot loaders, BIOS (Basic Input and Output
 ## 4. initrd or initramfs (Initial RAM Disk)
 - Temporary filesystem is loaded into RAM
 - Once the root filesystem is accessible, the real root is mounted and the temporary one is discarded
-
-
 
 ## References

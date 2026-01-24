@@ -1,19 +1,18 @@
+---
+title: "systemd"
+date: 2026-01-23
+tags: ["linux"]
+---
 
+*Date: 2026-01-23*
+{{< tags >}}
 
-2025-04-22 18:49
-
-Level : 
-
-Tags : [[linux]]
-
-# systemd
-
+## Intro
 - Systemd is an init system in Linux-based operating systems that is responsible for starting the operating system and managing various services and processes.
 - Think of it as the conductor for the system's startup and ongoing operations, ensuring that everything runs smoothly.
 - In older times, there was the System V initialization system (SysV init) which was popular for launching processes at startup.
 - systemd attempts to decrease boot times and parcel out system resources more efficiently by starting processes concurrently and in parallel, and starting only necessary services, leaving other services to start after boot as needed.
-
-### PID 1 - Mother of all Processes
+## PID 1 - Mother of all Processes
 - PID 1 is the mother of all processes on Linux systems. This is the first process to start then it launches all other processes. Processes are one or more running instances of a program.
 - Processes can create independent copies of themselves which are the child processes and the original the parent process. Each child has its own PID  and its own allocation of system resources.
 - Threads are lightweight processes that run in parallel and share system resources with their parents.
@@ -28,7 +27,6 @@ Tags : [[linux]]
 • I is an idle kernel thread.
 • < means high priority.
 • N is low priority.
-
 - systemctl is used to list services and their states ; We are interested in service files because Linux users and administrators interact mainly with service files and rarely need to bother with any other type of unit file.
 - To check the service files, we use the command ;
 - systemctl list-unit-files --type=service
@@ -52,4 +50,5 @@ Tags : [[linux]]
 Active: inactive (dead) since Sun 2020-06-28 19:57:49 PDT; 6s ago
 - The service has cleanly stopped. If this does not work, then try the nuclear option: $ sudo systemctl kill -9 mariadb
 - top command is used to identify processes using up the most CPU resources
+
 ## References

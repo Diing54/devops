@@ -1,42 +1,11 @@
 baseURL = 'https://Diing54.github.io/devops/'
-languageCode = 'en-us'
-title = 'DevOps Brain'
-theme = "github.com/imfing/hextra"
-
-[module]
-  [[module.imports]]
-    path = "github.com/imfing/hextra"
-
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
-
-# Allow raw HTML (fixes the warning you saw)
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-
-[menu]
-  [[menu.main]]
-    identifier = "docs"
-    name = "Notes"
-    url = "/docs/"
-    weight = 1
+title = "Diing's Tech Yard"
+theme = ["github.com/imfing/hextra"]
 
 [params]
-  # FIXED: Footer must be a section, not a boolean
-  [params.footer]
-    enable = false 
+  description = "DevOps Engine Room"
+  # This array ensures our CSS overrides the theme defaults
+  customCSS = ["css/custom.css"]
 
-  # FIXED: Navbar must be a section
-  [params.navbar]
-    displayTitle = true
-    displayLogo = true
-    width = "normal"
-
-  [params.search]
-    enable = true
-    type = "flexsearch"
-    
-  [params.editURL]
-    enable = false
+[markup.goldmark.renderer]
+  unsafe = true

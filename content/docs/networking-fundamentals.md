@@ -1,12 +1,13 @@
+---
+title: "networking-fundamentals"
+date: 2026-01-23
+tags: ["linux","networking"]
+---
 
-2025-09-28 14:45
+*Date: 2026-01-23*
+{{< tags >}}
 
-Level : 
-
-Tags : [[networking]], [[linux]]
-
-# networking-fundamentals
-
+## Intro
 ## The OSI (Open Systems Interconnection) Model
 - The osi model is a conceptual framework that describes seven distinct layers of network communication. It  helps us to understand how different technologies work together to enable a network.
 - Its basically a set of rules that explains how different computer systems communicate over a network.
@@ -130,6 +131,8 @@ Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Pr
 
 2. Dynamic routing - Routers create and update routing tables at runtime based on actual network conditions. They attempt to find the fastest path from the source to the destination by using a dynamic routing protocol, which is a set of rules that create, maintain and update the dynamic routing table. Its biggest advantage is that it adapts to changing network conditions e.g. traffic volume, bandwidth and network failure.
 
+
 ## References
-1. https://www.geeksforgeeks.org/computer-networks/open-systems-interconnection-model-osi/
-2. https://www.cloudflare.com/en-in/learning/network-layer/what-is-a-computer-port/
+- https://www.geeksforgeeks.org/computer-networks/open-systems-interconnection-model-osi/
+- https://www.cloudflare.com/en-in/learning/network-layer/what-is-a-computer-port/
+

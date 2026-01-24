@@ -1,17 +1,20 @@
+---
+title: "shell-commands"
+date: 2026-01-23
+tags: ["linux"]
+---
 
-2025-02-15 15:13
+*Date: 2026-01-23*
+{{< tags >}}
 
-Level: #child
-
-Tags : [[linux]]
+## Intro
+When you type a command in the terminal, your system looks for the executable file in the directories listed in the $PATH variable. If a directory isn't in $PATH, you must specify the full path to run a script.
 
 Use any of the following options to get more information about linux commands:
-man commandName
-info commandName
-commandName -h
-commandName --help
-## Intro
-- When you type a command in the terminal, your system looks for the executable file in the directories listed in the $PATH variable. If a directory isn't in $PATH, you must specify the full path to run a script
+- man commandName
+- info commandName
+- commandName -h
+- commandName --help
 ## env 
 - This command will show special variables
 ## ls
@@ -151,9 +154,9 @@ commandName --help
 - This command is used to change the owner of the file or directory
 - The owner of a directory/ file or the root user are eligible to use this command
 - sudo chown astro test.txt - Transferring the file ownership to astro
-- chown -R - Changing the ownership of a directory and all other files in it.
-- chown : - Through this command,I can simulataneousy change the owner and the group of the file
-- chgrp - Directly changing the group of the file
+- chown -R - Changing the ownership of a directory and all other files in it.
+- chown : - Through this command,I can simulataneousy change the owner and the group of the file
+- chgrp - Directly changing the group of the file
 
 ## chmod
 
@@ -210,7 +213,7 @@ commandName --help
 - ps ax - "a" will list other users' processes apart from yours and "x" will show other processes not linked to any terminal
 - You can search for a specific process combining grep with a pipe as shown below :  
     ps ax | grep -i "tensorflow" | head
-# pstree
+## pstree
 - Command for displaying processes running on your system in a tree structure 
 
 ## top
@@ -220,15 +223,15 @@ commandName --help
 ## kill
 
 - Linux processes can receive signals and react to them therefore we can interact with running programs
-- The kill command is used to terminate a program (kill ). The PID is the process ID
+- The kill command is used to terminate a program (kill ). The PID is the process ID
 - We can use the kill command to send other signals apart from terminating a program as follows :  
-    kill -HUP - hang up - It is sent automatically when a terminal window that started a process is closed before terminating the process  
-    kill -INT - interrupt - It sends the same signal used when we press ctrl - c in the terminal, which usually terminates the process  
-    kill -KILL - This is not sent to the process, but to the operating system which immediately stops but not terminate the process  
-    kill -TERM - terminate - Its the default signal sent by kill  
-    kill -CONT - continue - Used to resume a stopped process  
-    kill -STOP - stop is sent to the operating system kernel which immediately stops but does not terminate the process
-- You might see numbers used instead, like kill -1 . In this case,1 corresponds to HUP. 2 corresponds to INT. 9 corresponds to KILL. 15 corresponds to TERM. 18 corresponds to CONT. 15 corresponds to STOP.
+    kill -HUP - hang up - It is sent automatically when a terminal window that started a process is closed before terminating the process  
+    kill -INT - interrupt - It sends the same signal used when we press ctrl - c in the terminal, which usually terminates the process  
+    kill -KILL - This is not sent to the process, but to the operating system which immediately stops but not terminate the process  
+    kill -TERM - terminate - Its the default signal sent by kill  
+    kill -CONT - continue - Used to resume a stopped process  
+    kill -STOP - stop is sent to the operating system kernel which immediately stops but does not terminate the process
+- You might see numbers used instead, like kill -1 . In this case,1 corresponds to HUP. 2 corresponds to INT. 9 corresponds to KILL. 15 corresponds to TERM. 18 corresponds to CONT. 15 corresponds to STOP.
 
 ## type
 
@@ -240,33 +243,33 @@ commandName --help
 - The type command is used to figure out the type of a command
 - type
 
-# which
+## which
 
 - This will return the path of the command specified
-# man (manual)
+## man (manual)
 - This command is used to display information about the specified command eg 
 - man which 
-# whoami
+## whoami
 
 - This command will print the user name currently logged into the terminal session
 
-# who
+## who
 
 - This command displays the users logged in to the system
 
-# su
+## su
 
 - This command is used to switch to another user
 - su
 
-# sudo
+## sudo
 
 - Used to run command as a root
 - You must be enabled to use sudo and once you are authorised, you can run commands as root by entering your user's password
 - You can use sudo to run commands as any user. root is the default but use the -u option to specify another user :  
     sudo -u astro ls /Users/flavio
 
-# passwd
+## passwd
 
 - Users in linux have a password assigned. You can change the password using the passwd command
 - When you want to change your password, you can type :  
@@ -274,19 +277,19 @@ commandName --help
 - When you are root , you can set the username for which you want to change the password :  
     passwd
 
-# ping
+## ping
 
 - This command pings a specific network host, on the local network or on the internet
-- Syntax is ping where could be a domain name or an IP address
+- Syntax is ping where could be a domain name or an IP address
 - This command sends a request to the server and the server returns a response
 - ping keeps sending the request every second by default. It will keep running until you stop it with ctrl - c unless you pass the number of times you want to try with the -c option: ping -c google.com
 
-# clear
+## clear
 
 - Used to clear all the previous commands that were run in the current terminal
 - The screen will clear
 
-# crontab
+## crontab
 
 - Cron jobs are jobs that are scheduled to run at specific intervals. You might have a command perform something every hour, or every day, or every 2 weeks. Or on weekends.
 - They are very powerful, especially when used on servers to perform maintenance and automations.
@@ -297,8 +300,6 @@ commandName --help
 - This will return the Operating System codename eg Linux
 - uname -mp - The m option shows the hardware name and the p option prints the processor architecture
 - uname -a - This will print all the information available
-
-
 ## References
-
-https://www.freecodecamp.org/news/the-linux-commands-handbook/
+- https://www.freecodecamp.org/news/the-linux-commands-handbook/
+ 
