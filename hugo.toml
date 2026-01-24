@@ -4,9 +4,8 @@ theme = ["github.com/imfing/hextra"]
 
 [params]
   description = "My Kasten"
-  # Use the absolute path starting with /
-  # Hugo will automatically prepend the 'devops' prefix during build
-  customCSS = ["/css/custom.css"]
+  # Hextra checks 'assets/' by default
+  customCSS = ["css/custom.css"]
 
 [markup.goldmark.renderer]
   unsafe = true
