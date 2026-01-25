@@ -135,4 +135,5 @@ Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Pr
 ## References
 - https://www.geeksforgeeks.org/computer-networks/open-systems-interconnection-model-osi/
 - https://www.cloudflare.com/en-in/learning/network-layer/what-is-a-computer-port/
+- https://aws.amazon.com/what-is/routing/#:~:text=Routing%20is%20the%20process%20of,place%20through%20many%20different%20paths
 
