@@ -1,0 +1,302 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Diing – Automation</title>
+    <link>//:1313/tags/automation/</link>
+    <description>Recent content in Automation on Diing</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 23 Jan 2026 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="//:1313/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>bash-scripting</title>
+      <link>//:1313/docs/bash-scripting/</link>
+      <pubDate>Fri, 23 Jan 2026 00:00:00 +0000</pubDate>
+      
+      <guid>//:1313/docs/bash-scripting/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;em&gt;Date: 2026-01-23&lt;/em&gt;
+&lt;div class=&#34;hx-flex hx-flex-wrap hx-gap-2 hx-mt-4&#34;&gt;
+  
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Intro&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;intro&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#intro&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;A bash script is a file containing lines of code either simple commands or complex ones tha can either navigate directories or create other stuff; in simple words they can do a series of actions. Basically they can run bash commands eg ls , mkdir, ps, grep ,touch ,rm etc.&lt;/li&gt;
+&lt;li&gt;A bash script can be executed and the lines of code inside it will be run line by line.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Advantages of bash scripting&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;advantages-of-bash-scripting&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#advantages-of-bash-scripting&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Automation - Shell scripts allow a user to automate repetitive tasks hence saving on time and minimizing the risk of human error&lt;/li&gt;
+&lt;li&gt;Portability -  Can run on various OS including windows through VM&amp;rsquo;s&lt;/li&gt;
+&lt;li&gt;HIghly flexible as they can be customized easily&lt;/li&gt;
+&lt;li&gt;Easy to write as they require any special software&lt;/li&gt;
+&lt;li&gt;Integration - Shell scripts can be integrated with other tools and applications and cloud services allowing for more complex automation and system management tasks&lt;/li&gt;
+&lt;li&gt;Debugging - They are easy to debug and most of them have built-in debugging and error-reporting tools&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;NOTE : Shell is a program responsible for displaying of an interface for interacting the OS(CLI- Command Line Interface). Bash is a type of shell.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Creating and executing bash scripts&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;creating-and-executing-bash-scripts&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#creating-and-executing-bash-scripts&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Bash scripts end with .sh&lt;/li&gt;
+&lt;li&gt;A bash script starts with a shebang. This is the first line which must be present in a script which specifies the interpreter that will be used when executing the script. This allows users to leverage the power of different interpreters. Shebang tells the shell to execute it via bash shell&lt;/li&gt;
+&lt;li&gt;When saving a script file, its is good practice to place commonly used scripts in the ~/bin/ directory&lt;/li&gt;
+&lt;li&gt;The script files also need to have the execute permission to allow them to run&lt;/li&gt;
+&lt;li&gt;An example of a shebang statement (#!/bin/bash)&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;https://github.com/user-attachments/assets/9569a3c0-9d0a-4b2a-9eb8-dcd8af079d8c&#34; alt=&#34;image&#34;  loading=&#34;lazy&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;The read command reads the input and stores it in the variable path&lt;/li&gt;
+&lt;li&gt;The ls -al command takes the variable with the stored path and displays the details of the path&lt;/li&gt;
+&lt;li&gt;We can then run the script using the following commands :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;sh hello.sh&lt;/li&gt;
+&lt;li&gt;bash hello.sh - These commands(sh hello.sh) must be specified with the directory of the bash script if not in the bash script directory&lt;/li&gt;
+&lt;li&gt;./hello.sh - ./ tells the bash to execute hello.sh in the current working directory. We can use hello.sh to execute the bash script while on any directory of the terminal if the path of the script file is added to the $PATH variable&lt;/li&gt;
+&lt;li&gt;. hello.sh&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;When a script is executed using either the bash command or the dot (.) command, you do not have to set executable permissions on script but read permissions need to be set.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Variables and data types&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;variables-and-data-types&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#variables-and-data-types&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Variables store data which can be read, accessed and manipulated eg : name=John&lt;/li&gt;
+&lt;li&gt;We can also set a variable to a path of a particular directory as shown below
+path=/etc&lt;/li&gt;
+&lt;li&gt;$ is required to access the variable&amp;rsquo;s content&lt;/li&gt;
+&lt;li&gt;The naming conventions of a variable are :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;Variable names should start with a letter or an underscore (&lt;code&gt;_&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Variable names can contain letters, numbers, and underscores (_).&lt;/li&gt;
+&lt;li&gt;Variable names are case-sensitive.&lt;/li&gt;
+&lt;li&gt;Variable names should not contain spaces or special characters.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Command line Arguments&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;command-line-arguments&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#command-line-arguments&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Command line arguments allow users to pass data to a bash script at runtime, These arguments are accessible inside the script using special variables.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The command line arguments are stored in special variables:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$0  = The name of the script&lt;/li&gt;
+&lt;li&gt;$1, $2, $3, &amp;hellip;&amp;hellip;. = First, second, third argument respectively etc&lt;/li&gt;
+&lt;li&gt;$# - Total number of arguments passed to the bash script&lt;/li&gt;
+&lt;li&gt;$@ - All the arguments supplied to the bash script&lt;/li&gt;
+&lt;li&gt;$ $ - The process ID of the current script&lt;/li&gt;
+&lt;li&gt;$USER - The username of the user running the script&lt;/li&gt;
+&lt;li&gt;$HOSTNAME - The hostname of the machine the script is running on.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Example showcasing command line arguments:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/user-attachments/assets/f7eed79e-a831-4839-b5fb-fd7b392a16b1&#34; alt=&#34;image&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/user-attachments/assets/c78722de-96a5-4b14-82c3-723f6fa77d19&#34; alt=&#34;image&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/user-attachments/assets/335dda0c-1c25-4217-8a55-29e7fc022d26&#34; alt=&#34;image&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Quotes&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;quotes&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#quotes&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;We use quotes to enclose the values being assigned to a variable if we are working with complex values or values with spaces between. If we dont use quotes eg var=Hello World, there will be an error because by default, bash uses space for separate items.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Commands work in the same way in the command line as they work in a script so we can just work in the command line for easier demonstration.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We enclose content in quotes so bash can consider it as a single item. We can use single quotes or double quotes&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Single quotes will treat every character literally while double quotes may allow us to include other variables as part of the value as shown below :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/user-attachments/assets/4cbf654a-9657-4b6f-96b9-36526118e35a&#34; alt=&#34;image&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Command Substitution&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;command-substitution&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#command-substitution&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;This allows us to take the output of a command or program and save it as a value of a variable
+&lt;img src=&#34;https://github.com/user-attachments/assets/a589920f-453b-4ce9-8c92-368e836fb924&#34; alt=&#34;Screenshot_2025-04-14_18-23-51&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h2&gt;Exporting Variables&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;exporting-variables&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#exporting-variables&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;When you run a shell script e.g. bash hello.sh, it starts a new  process that is separate from the shell you are currently in. Its like opening a new mini terminal behind the scenes to run that script.&lt;/li&gt;
+&lt;li&gt;Each process in Linux has its own memory - and variables live in memory - so a variable in your current shell won&amp;rsquo;t automatically be visible to that new process.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Variables are limited to the process they were created in&amp;rdquo;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Example&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;example&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#example&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h5&gt;script1.sh&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;script1sh&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#script1sh&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;myname=&amp;ldquo;Chiman&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;bash script2.sh&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5&gt;script2.sh&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;script2sh&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#script2sh&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;echo &amp;ldquo;Hello $myname&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;When you run &lt;code&gt;script1.sh&lt;/code&gt;, it starts a new process (&lt;code&gt;script2.sh&lt;/code&gt;). But unless &lt;code&gt;myname&lt;/code&gt; is &lt;strong&gt;exported&lt;/strong&gt;, &lt;code&gt;script2.sh&lt;/code&gt; will print nothing because it doesn&amp;rsquo;t know &lt;code&gt;myname&lt;/code&gt; exists.&lt;/li&gt;
+&lt;li&gt;To solve this problem we need to export the variable;&lt;/li&gt;
+&lt;li&gt;export myname=&amp;ldquo;Chiman&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;bash script2.sh&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Input&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;input&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#input&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The read command takes user input and saves it into a variable.
+&lt;img src=&#34;https://github.com/user-attachments/assets/ba466b7c-6b83-45dc-a551-388af24c59af&#34; alt=&#34;Screenshot From 2025-04-18 20-16-46&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;You can use the -p option which allows you to specify the kind of input the user should enter and also -s which makes the input silent, e.g. prompting a user their username and password&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;read -p &amp;lsquo;Username: &amp;rsquo; uservar&lt;/li&gt;
+&lt;li&gt;read -sp &amp;lsquo;Password: &amp;rsquo; passvar&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;STDIN / STDOUT / STDERR&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;stdin--stdout--stderr&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#stdin--stdout--stderr&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;(Will comeback to this when learning pipes)&lt;/p&gt;
+&lt;h2&gt;Arithmetic&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;arithmetic&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#arithmetic&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Bash supports several ways to do arithmetic.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;let&lt;/li&gt;
+&lt;li&gt;expr&lt;/li&gt;
+&lt;li&gt;Double parentheses (( ))&lt;/li&gt;
+&lt;li&gt;Length of a variable ${#var} - useful for strings&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Let - A basic built-in command&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;let---a-basic-built-in-command&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#let---a-basic-built-in-command&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;let a=5+4         # No spaces allowed unless in quotes
+echo $a           # 9&lt;/p&gt;
+&lt;p&gt;let &amp;ldquo;a = 5 + 4&amp;rdquo;   # You can use quotes to allow spaces
+echo $a           # 9&lt;/p&gt;
+&lt;p&gt;let a++           # Increment a by 1
+echo $a           # 10&lt;/p&gt;
+&lt;p&gt;let &amp;ldquo;a = 4 * 5&amp;rdquo;   # Multiplication
+echo $a           # 20&lt;/p&gt;
+&lt;p&gt;let &amp;ldquo;a = $1 + 30&amp;rdquo; # Use a command-line argument&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Operator&lt;/th&gt;
+          &lt;th&gt;Meaning&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;+&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Addition&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;-&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Subtraction&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;*&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Multiplication (use &lt;code&gt;\*&lt;/code&gt; in &lt;code&gt;expr&lt;/code&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Division&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;%&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Modulus (remainder)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;var++&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Increment by 1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;var--&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Decrement by 1&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;expr - Print results and does not store&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;expr---print-results-and-does-not-store&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#expr---print-results-and-does-not-store&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;expr item1 operator item2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;expr 5 + 4 &amp;mdash;&amp;gt; Outputs: 9&lt;/p&gt;
+&lt;p&gt;expr &amp;ldquo;5 + 4&amp;rdquo; &amp;mdash;&amp;gt; Wrong: Just prints the string&lt;/p&gt;
+&lt;p&gt;expr 5+4 &amp;mdash;&amp;gt; Wrong: No spaces = no evaluation&lt;/p&gt;
+&lt;p&gt;expr 5 \ * 4 &amp;mdash;&amp;gt; Right: Use \ * to escape the multiplication symbol&lt;/p&gt;
+&lt;p&gt;expr 11 % 2 &amp;mdash;&amp;gt; Outputs: 1&lt;/p&gt;
+&lt;p&gt;a=$(expr 10 - 3) &amp;mdash;&amp;gt; Store result into variable a
+echo $a &amp;mdash;&amp;gt; 7&lt;/p&gt;
+&lt;h3&gt;((  )) - Recommended way to do arithmetic&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;-----recommended-way-to-do-arithmetic&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#-----recommended-way-to-do-arithmetic&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;variable=$((expression))&lt;/p&gt;
+&lt;p&gt;(( expression ))  # For in-place operations like incrementing&lt;/p&gt;
+&lt;p&gt;a=$((4 + 5))      # 9
+echo $a&lt;/p&gt;
+&lt;p&gt;a=$((3+5))        # 8
+b=$((a + 3))      # 11
+b=$(( $a + 4 ))   # 12&lt;/p&gt;
+&lt;p&gt;(( b++ ))         # Increment b by 1 =&amp;gt; 13
+(( b += 3 ))      # b = b + 3 =&amp;gt; 16
+a=$(( 4 * 5 ))    # 20&lt;/p&gt;
+&lt;h3&gt;&lt;code&gt;${#variable}&lt;/code&gt; – Get String Length&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;variable--get-string-length&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#variable--get-string-length&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;a=&amp;ldquo;Hello World&amp;rdquo;
+echo ${#a}   # 11&lt;/p&gt;
+&lt;p&gt;b=4953
+echo ${#b}   # 4&lt;/p&gt;
+&lt;h2&gt;If Statements&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;if-statements&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#if-statements&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;If statements help the script to make decisions ;
+if [ &lt;some test&gt; ]
+then
+&lt;commands&gt;
+fi&lt;/p&gt;
+&lt;p&gt;#!/bin/bash&lt;/p&gt;
+&lt;h1&gt;Basic if statement&lt;/h1&gt;&lt;p&gt;if [ $1 -gt 100 ]
+then
+echo Hey that&#39;s a large number.
+pwd
+fi
+date&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;$1&lt;/code&gt; is the &lt;strong&gt;first command-line argument&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-gt&lt;/code&gt; means &lt;strong&gt;greater than&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If &lt;code&gt;$1&lt;/code&gt; is greater than 100:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;It prints a message.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Shows current directory (&lt;code&gt;pwd&lt;/code&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;fi&lt;/code&gt; marks the &lt;strong&gt;end&lt;/strong&gt; of the if statement.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;date&lt;/code&gt; runs no matter what.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;./if_example.sh 15     # Only date will be printed
+./if_example.sh 150    # Message, directory, and date will be printed&lt;/p&gt;
+&lt;p&gt;In &lt;code&gt;[ $1 -gt 100 ]&lt;/code&gt;, the square brackets &lt;code&gt;[&lt;/code&gt; &lt;code&gt;]&lt;/code&gt; are a way to call the &lt;code&gt;test&lt;/code&gt; command.
+Common test operators;
+! EXPRESSION | Not true&lt;/p&gt;
+&lt;p&gt;-n STRING | String is not empty&lt;/p&gt;
+&lt;p&gt;-z STRING | String is empty&lt;/p&gt;
+&lt;p&gt;STRING1 = STRING2 | Strings are equal&lt;/p&gt;
+&lt;p&gt;STRING1 != STRING2 | Strings are not equal&lt;/p&gt;
+&lt;p&gt;INT1 -eq INT2 | Equal numbers&lt;/p&gt;
+&lt;p&gt;INT1 -gt INT2 | Greater than&lt;/p&gt;
+&lt;p&gt;-e FILE | File exists&lt;/p&gt;
+&lt;p&gt;-s FILE | File exists and is not empty&lt;/p&gt;
+&lt;p&gt;-x FILE | File exists and is executable&lt;/p&gt;
+&lt;h2&gt;References&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;references&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#references&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.freecodecamp.org/news/bash-scripting-tutorial-linux-shell-script-and-command-line-for-beginners/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.freecodecamp.org/news/bash-scripting-tutorial-linux-shell-script-and-command-line-for-beginners/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ryanstutorials.net/bash-scripting-tutorial/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://ryanstutorials.net/bash-scripting-tutorial/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

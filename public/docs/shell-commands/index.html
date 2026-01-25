@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="robots" content="noindex, nofollow" />
+  <link rel="icon shortcut" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" id="favicon-svg" />
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+<link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
+<title>shell-commands – Diing</title>
+  <meta name="description" content="Date: 2026-01-23 Intro When you type a command in the terminal, your system looks for the executable file in the directories listed in the $PATH variable. If a directory isn’t in $PATH, you must specify the full path to run a script.
+Use any of the following options to get more information about linux commands:
+man commandName info commandName commandName -h commandName –help env This command will show special variables ls This command is used when listing all the files that are inside a container. It has several combinations such as -al which returns more detailed information about the files inside a particular folder. lsblk This command will show the disks and their partitions info of your pc cat This command is used to show the contents of a file eg
+cat /etc/systemd/network.sh cd The change directory command makes it possible for you to move inside a specified path/folder. by using cd .. ,you move to the previous directory/parent folder. pwd This command is used to know which directory you are in, by running it ,it will print the current folder path mkdir This command is used to create folders YOu can create multiple folders with one command: mkdir dogs people You can also create multiple nested folders by adding the -p option: mkdir -p fruits/apples rmdir Used to delete a folder or multiple folders at once ( The folder must be empty) To delete folders with files in them (rm -rf fruits people) mv Used to move a file by specifying the file’s current path and its new path (mv pear new_pear) - Renaming files and folders If the last parameter is a folder, the file located at the first parameter is going to be moved into the folder (mv pear apple fruits) - pear and apple moved to the fruits folder cp Used to copy a file To copy folders, you need to add the -r to recursively copy the whole folder contents (cp -r fruits people) touch Used to create an empty file eg touch apple open Used to open a directory (open .) - opens the current directory Can also be used to open an application find The find command can be used to find files or folders matching a particular search pattern. It searches recursively (find . -name ‘*.js’) - Find all files under the current tree that have the .js extension and print the relative path of each file that matches (find . -type d name src) - Find directories under the current tree matching the name ‘src’ (find folder 1 folder 2 -name filename.txt) - Searching under multiple root trees (find . -type d -name node_modules -or -name public) - Find directories under the current tree matching the name ’node_modules’ or ‘public’ (find . -type d -name ‘.md’ -not -path ’node_modules/’) - excluding a path (find . -type f -size &#43;100c) - Searching files that have more than 100 characters(bytes) in them (find . -type f -size &#43;100k -size -1M) - Searching files bigger tha 100KB but smaller than 1MB (find . -type f -mtime &#43;3) - Searching files edited more that 3 days ago (find . -type f -mtime -1) - Searching files edited in the last 24 hrs ln Used to create links(Pointer to another file) There are two types of links(hard links and soft links Hard links are rarely used. You cant link to directories and external filesystems (ln recipes.txt newrecipes.txt) - Creating a hard link Soft links are different. They are more powerful as you can link to other filesystems and to directories but when the original is removed, the link will be broken (ln -s recipes.txt newrecipes.txt) - Creating a soft link gzip Used for compressing a file (gzip filename) - This will compress the file and append the .gz extension to it and the original file is deleted. To prevent this, use the -c option and use the output redirection to write the output to the filename.gz file. ( gzip -c filename &gt; filename.gz) (gzip -d filename.gz) - Decompressing the file gunzip Basically the equivalent of gzip only that when decompressing, no need for adding the -d tar Used to create an archive, grouping multiple files in a single file (tar -cf archive.tar file1 file2) - Creates an archive named archive.tar with the content of file1 file2 (tar -xf archive.tar) - Extract files from an archive in the current folder alias This is like creating a new command to mimic an existing command so that you dont use the existing command according to your preferences (alias ll = ’ls -al’) - Creating a new command ’ll’ that is an alias to ’ls -al’ (alias) - will list all the aliases defined The alias will work until the terminal sessions is closed To make it permanent, add it to the shell configuration tail Opens the file at the end and watches for file changes Great for watching log files ( tail -f /var/log/system.log ) grep Used to search in lines or can be combined with pipes to filter the output of another command (grep “error” logfile.txt) - Finds and prints all lines in logfile.txt containing the word “error” (grep “hello” file1.txt file2.txt) - Searches for “hello” in both files You can use -i to ignore case sensitivity (grep -i “error” logfile.txt) - Finds “Error”, “error” ,etc Can also be used in searching in the output of another command as shown in the next line ps aux | grep “firefox” (grep -v “error” logfile.txt) - Inverting the search ie exclude all lines that contain the pattern (grep -n “command” logfile.txt) - Shows the line numbers where “command” has appeared (grep -c “error” logfile.txt) - counts the number of lines containing “error” (grep “^hello” file.txt) - search for lines that start with “hello” (grep “done$” file.txt) - search for files that end with “done” sort Used in sorting elements in a file (sort -r filename.txt) - Reverses the order of sorting Can work with pipes,i.e you can use it on the output of another command ls | sort echo echo “Hello world” - prints a simple messsage name=“John”, echo “Hello $name” - This will print the value of variable echo “Hello, file” &gt; output.txt - This will direct the output to a file but will override the contents of that file echo “Hello file” » output.txt - This will append or add another line at the end of output.txt echo “Today is $(date) - Using echo with other commands chown Every file/directory in linux has an owner This command is used to change the owner of the file or directory The owner of a directory/ file or the root user are eligible to use this command sudo chown astro test.txt - Transferring the file ownership to astro chown -R - Changing the ownership of a directory and all other files in it. chown : - Through this command,I can simulataneousy change the owner and the group of the file chgrp - Directly changing the group of the file chmod Used to change the permissions of a file Every file has 3 permissions (read, write and execute) For example if a go into a directory and run ls -al, the following is displayed :
+drwxrwxr-x 4 astro astro 4096 Feb 9 11:33 .
+drwxr-x— 31 astro astro 4096 Feb 12 14:50 ..
+drwxrwxr-x 8 astro astro 4096 Feb 13 12:32 .git
+drwxrwxr-x 2 astro astro 4096 Feb 13 12:39 linux-basics
+-rw-rw-r– 1 astro astro 163 Feb 9 11:32 README.md The letters and hyphens you see at the start of every file/folder are the permissions given of the file/folder (-) means its a normal file (d) means its a directory (l) means its a link After that, the first 3 values eg rwx represents the permissions of the owner of the file/directory The next 3 values eg r-x represents the permissions of the group of the file The last 3 values eg — represents the permissions of the other members or everyone else that comes across the file rwx means that person has read, write and execute permissions of the file/directory If either of the rwx values is swapped with - ,that means that person lacks the swapped permission eg : r-x means the person has read and execute permission but lacks the write permission You can change the permissions using the chmod command Changing permissions using numeric notation discussed below :
+Each Permission has a numeric value :
+r = 4
+w = 2
+x = 1 chmod 755 file.txt - This command sets the owner : rwx (7), Group r-x (5) and others r-x (5) Changing the permissions using symbolic notation as shown below :
+u = Owner
+g = Group
+o = Others chmod u&#43;w file.txt - This adds the write permission to the Owner chmod g-x file.txt - This removes the execute permission from the group chmod o&#43;r file.txt - This adds the read permission for others du This command will calculate the size of a directory as a whole du * - This will calculate the size of each file individually du -m - Displaying the size in Megabytes du -g - Displaying the size in Gigabytes du -ah - -a wil print the size of each file, -h will show a human readable notation for sizes df Used to get disk usage information Its basic form will print information about volumes mounted df -h will show the values in human readable format ps Used to inspect processes that are running on your machine ps ax - “a” will list other users’ processes apart from yours and “x” will show other processes not linked to any terminal You can search for a specific process combining grep with a pipe as shown below :
+ps ax | grep -i “tensorflow” | head pstree Command for displaying processes running on your system in a tree structure top Used to display dynamic real time information about running processes in your machine kill Linux processes can receive signals and react to them therefore we can interact with running programs The kill command is used to terminate a program (kill ). The PID is the process ID We can use the kill command to send other signals apart from terminating a program as follows :
+kill -HUP - hang up - It is sent automatically when a terminal window that started a process is closed before terminating the process
+kill -INT - interrupt - It sends the same signal used when we press ctrl - c in the terminal, which usually terminates the process
+kill -KILL - This is not sent to the process, but to the operating system which immediately stops but not terminate the process
+kill -TERM - terminate - Its the default signal sent by kill
+kill -CONT - continue - Used to resume a stopped process
+kill -STOP - stop is sent to the operating system kernel which immediately stops but does not terminate the process You might see numbers used instead, like kill -1 . In this case,1 corresponds to HUP. 2 corresponds to INT. 9 corresponds to KILL. 15 corresponds to TERM. 18 corresponds to CONT. 15 corresponds to STOP. type A command can be one of these 4 types :
+an executable
+a shell built-in program
+a shell function
+an alias The type command is used to figure out the type of a command type which This will return the path of the command specified man (manual) This command is used to display information about the specified command eg man which whoami This command will print the user name currently logged into the terminal session who This command displays the users logged in to the system su This command is used to switch to another user su sudo Used to run command as a root You must be enabled to use sudo and once you are authorised, you can run commands as root by entering your user’s password You can use sudo to run commands as any user. root is the default but use the -u option to specify another user :
+sudo -u astro ls /Users/flavio passwd Users in linux have a password assigned. You can change the password using the passwd command When you want to change your password, you can type :
+passwd When you are root , you can set the username for which you want to change the password :
+passwd ping This command pings a specific network host, on the local network or on the internet Syntax is ping where could be a domain name or an IP address This command sends a request to the server and the server returns a response ping keeps sending the request every second by default. It will keep running until you stop it with ctrl - c unless you pass the number of times you want to try with the -c option: ping -c google.com clear Used to clear all the previous commands that were run in the current terminal The screen will clear crontab Cron jobs are jobs that are scheduled to run at specific intervals. You might have a command perform something every hour, or every day, or every 2 weeks. Or on weekends. They are very powerful, especially when used on servers to perform maintenance and automations. crontab -l - exploring which cronjobs are defined by you uname This will return the Operating System codename eg Linux uname -mp - The m option shows the hardware name and the p option prints the processor architecture uname -a - This will print all the information available References https://www.freecodecamp.org/news/the-linux-commands-handbook/ " /><link rel="canonical" href="//:1313/docs/shell-commands/" itemprop="url" />
+
+<meta property="og:title" content="shell-commands">
+<meta
+  property="og:description"
+  content="
+    
+      Date: 2026-01-23
+
+  
+
+
+Intro
+    When you type a command in the terminal, your system looks for the executable file in the directories listed in the $PATH variable. If a directory isn&rsquo;t in $PATH, you must specify the full path to run a script.
+Use any of the following options to get more information about linux commands:
+
+man commandName
+info commandName
+commandName -h
+commandName &ndash;help
+
+env
+    
+This command will show special variables
+
+ls
+    
+This command is used when listing all the files that are inside a container.
+It has several combinations such as -al which returns more detailed information about the files inside a particular folder.
+
+lsblk
+    
+This command will show the disks and their partitions info of your pc
+
+cat
+This command is used to show the contents of a file eg
+cat /etc/systemd/network.sh
+
+cd
+    
+The change directory command makes it possible for you to move inside a specified path/folder.
+by using cd .. ,you move to the previous directory/parent folder.
+
+pwd
+    
+This command is used to know which directory you are in, by running it ,it will print the current folder path
+
+mkdir
+    
+This command is used to create folders
+YOu can create multiple folders with one command: mkdir dogs people
+You can also create multiple nested folders by adding the -p option: mkdir -p fruits/apples
+
+rmdir
+    
+Used to delete a folder or multiple folders at once ( The folder must be empty)
+To delete folders with files in them (rm -rf fruits people)
+
+mv
+    
+Used to move a file by specifying the file&rsquo;s current path and its new path
+(mv pear new_pear) - Renaming files and folders
+If the last parameter is a folder, the file located at the first parameter is going to be moved into the folder
+(mv pear apple fruits) - pear and apple moved to the fruits folder
+
+cp
+    
+Used to copy a file
+To copy folders, you need to add the -r to recursively copy the whole folder contents (cp -r fruits people)
+
+touch
+    
+Used to create an empty file eg touch apple
+
+open
+    
+Used to open a directory
+(open .) - opens the current directory
+Can also be used to open an application
+
+find
+    
+The find command can be used to find files or folders matching a particular search pattern. It searches recursively
+(find . -name &lsquo;*.js&rsquo;) - Find all files under the current tree that have the .js extension and print the relative path of each file that matches
+(find . -type d name src) - Find directories under the current tree matching the name &lsquo;src&rsquo;
+(find folder 1 folder 2 -name filename.txt) - Searching under multiple root trees
+(find . -type d -name node_modules -or -name public) - Find directories under the current tree matching the name &rsquo;node_modules&rsquo; or &lsquo;public&rsquo;
+(find . -type d -name &lsquo;.md&rsquo; -not -path &rsquo;node_modules/&rsquo;) - excluding a path
+(find . -type f -size &#43;100c) - Searching files that have more than 100 characters(bytes) in them
+(find . -type f -size &#43;100k -size -1M) - Searching files bigger tha 100KB but smaller than 1MB
+(find . -type f -mtime &#43;3) - Searching files edited more that 3 days ago
+(find . -type f -mtime -1) - Searching files edited in the last 24 hrs
+
+ln
+    
+Used to create links(Pointer to another file)
+There are two types of links(hard links and soft links
+Hard links are rarely used. You cant link to directories and external filesystems
+(ln recipes.txt newrecipes.txt) - Creating a hard link
+Soft links are different. They are more powerful as you can link to other filesystems and to directories but when the original is removed, the link will be broken
+(ln -s recipes.txt newrecipes.txt) - Creating a soft link
+
+gzip
+    
+Used for compressing a file
+(gzip filename) - This will compress the file and append the .gz extension to it and the original file is deleted. To prevent this, use the -c option and use the output redirection to write the output to the filename.gz file. ( gzip -c filename &gt; filename.gz)
+(gzip -d filename.gz) - Decompressing the file
+
+gunzip
+    
+Basically the equivalent of gzip only that when decompressing, no need for adding the -d
+
+tar
+    
+Used to create an archive, grouping multiple files in a single file
+(tar -cf archive.tar file1 file2) - Creates an archive named archive.tar with the content of file1 file2
+(tar -xf archive.tar) - Extract files from an archive in the current folder
+
+alias
+    
+This is like creating a new command to mimic an existing command so that you dont use the existing command according to your preferences
+(alias ll = &rsquo;ls -al&rsquo;) - Creating a new command &rsquo;ll&rsquo; that is an alias to &rsquo;ls -al&rsquo;
+(alias) - will list all the aliases defined
+The alias will work until the terminal sessions is closed
+To make it permanent, add it to the shell configuration
+
+tail
+    
+Opens the file at the end and watches for file changes
+Great for watching log files ( tail -f /var/log/system.log )
+
+grep
+    
+Used to search in lines or can be combined with pipes to filter the output of another command
+(grep &ldquo;error&rdquo; logfile.txt) - Finds and prints all lines in logfile.txt containing the word &ldquo;error&rdquo;
+(grep &ldquo;hello&rdquo; file1.txt file2.txt) - Searches for &ldquo;hello&rdquo; in both files
+You can use -i to ignore case sensitivity
+(grep -i &ldquo;error&rdquo; logfile.txt) - Finds &ldquo;Error&rdquo;, &ldquo;error&rdquo; ,etc
+Can also be used in searching in the output of another command as shown in the next line
+ps aux | grep &ldquo;firefox&rdquo;
+(grep -v &ldquo;error&rdquo; logfile.txt) - Inverting the search ie exclude all lines that contain the pattern
+(grep -n &ldquo;command&rdquo; logfile.txt) - Shows the line numbers where &ldquo;command&rdquo; has appeared
+(grep -c &ldquo;error&rdquo; logfile.txt) - counts the number of lines containing &ldquo;error&rdquo;
+(grep &ldquo;^hello&rdquo; file.txt) - search for lines that start with &ldquo;hello&rdquo;
+(grep &ldquo;done$&rdquo; file.txt) - search for files that end with &ldquo;done&rdquo;
+
+sort
+    
+Used in sorting elements in a file
+(sort -r filename.txt) - Reverses the order of sorting
+Can work with pipes,i.e you can use it on the output of another command ls | sort
+
+echo
+    
+echo &ldquo;Hello world&rdquo; - prints a simple messsage
+name=&ldquo;John&rdquo;, echo &ldquo;Hello $name&rdquo; - This will print the value of variable
+echo &ldquo;Hello, file&rdquo; &gt; output.txt - This will direct the output to a file but will override the contents of that file
+echo &ldquo;Hello file&rdquo; &raquo; output.txt - This will append or add another line at the end of output.txt
+echo &ldquo;Today is $(date) - Using echo with other commands
+
+chown
+    
+Every file/directory in linux has an owner
+This command is used to change the owner of the file or directory
+The owner of a directory/ file or the root user are eligible to use this command
+sudo chown astro test.txt - Transferring the file ownership to astro
+chown -R - Changing the ownership of a directory and all other files in it.
+chown : - Through this command,I can simulataneousy change the owner and the group of the file
+chgrp - Directly changing the group of the file
+
+chmod
+    
+Used to change the permissions of a file
+Every file has 3 permissions (read, write and execute)
+For example if a go into a directory and run ls -al, the following is displayed :
+drwxrwxr-x 4 astro astro 4096 Feb 9 11:33 .
+drwxr-x&mdash; 31 astro astro 4096 Feb 12 14:50 ..
+drwxrwxr-x 8 astro astro 4096 Feb 13 12:32 .git
+drwxrwxr-x 2 astro astro 4096 Feb 13 12:39 linux-basics
+-rw-rw-r&ndash; 1 astro astro 163 Feb 9 11:32 README.md
+The letters and hyphens you see at the start of every file/folder are the permissions given of the file/folder
+(-) means its a normal file
+(d) means its a directory
+(l) means its a link
+After that, the first 3 values eg rwx represents the permissions of the owner of the file/directory
+The next 3 values eg r-x represents the permissions of the group of the file
+The last 3 values eg &mdash; represents the permissions of the other members or everyone else that comes across the file
+rwx means that person has read, write and execute permissions of the file/directory
+If either of the rwx values is swapped with - ,that means that person lacks the swapped permission eg :
+r-x means the person has read and execute permission but lacks the write permission
+You can change the permissions using the chmod command
+Changing permissions using numeric notation discussed below :
+Each Permission has a numeric value :
+r = 4
+w = 2
+x = 1
+chmod 755 file.txt - This command sets the owner : rwx (7), Group r-x (5) and others r-x (5)
+Changing the permissions using symbolic notation as shown below :
+u = Owner
+g = Group
+o = Others
+chmod u&#43;w file.txt - This adds the write permission to the Owner
+chmod g-x file.txt - This removes the execute permission from the group
+chmod o&#43;r file.txt - This adds the read permission for others
+
+du
+    
+This command will calculate the size of a directory as a whole
+du * - This will calculate the size of each file individually
+du -m - Displaying the size in Megabytes
+du -g - Displaying the size in Gigabytes
+du -ah - -a wil print the size of each file, -h will show a human readable notation for sizes
+
+df
+    
+Used to get disk usage information
+Its basic form will print information about volumes mounted
+df -h will show the values in human readable format
+
+ps
+    
+Used to inspect processes that are running on your machine
+ps ax - &ldquo;a&rdquo; will list other users&rsquo; processes apart from yours and &ldquo;x&rdquo; will show other processes not linked to any terminal
+You can search for a specific process combining grep with a pipe as shown below :
+ps ax | grep -i &ldquo;tensorflow&rdquo; | head
+
+pstree
+    
+Command for displaying processes running on your system in a tree structure
+
+top
+    
+Used to display dynamic real time information about running processes in your machine
+
+kill
+    
+Linux processes can receive signals and react to them therefore we can interact with running programs
+The kill command is used to terminate a program (kill ). The PID is the process ID
+We can use the kill command to send other signals apart from terminating a program as follows :
+kill -HUP - hang up - It is sent automatically when a terminal window that started a process is closed before terminating the process
+kill -INT - interrupt - It sends the same signal used when we press ctrl - c in the terminal, which usually terminates the process
+kill -KILL - This is not sent to the process, but to the operating system which immediately stops but not terminate the process
+kill -TERM - terminate - Its the default signal sent by kill
+kill -CONT - continue - Used to resume a stopped process
+kill -STOP - stop is sent to the operating system kernel which immediately stops but does not terminate the process
+You might see numbers used instead, like kill -1 . In this case,1 corresponds to HUP. 2 corresponds to INT. 9 corresponds to KILL. 15 corresponds to TERM. 18 corresponds to CONT. 15 corresponds to STOP.
+
+type
+    
+A command can be one of these 4 types :
+an executable
+a shell built-in program
+a shell function
+an alias
+The type command is used to figure out the type of a command
+type
+
+which
+    
+This will return the path of the command specified
+
+man (manual)
+    
+This command is used to display information about the specified command eg
+man which
+
+whoami
+    
+This command will print the user name currently logged into the terminal session
+
+who
+    
+This command displays the users logged in to the system
+
+su
+    
+This command is used to switch to another user
+su
+
+sudo
+    
+Used to run command as a root
+You must be enabled to use sudo and once you are authorised, you can run commands as root by entering your user&rsquo;s password
+You can use sudo to run commands as any user. root is the default but use the -u option to specify another user :
+sudo -u astro ls /Users/flavio
+
+passwd
+    
+Users in linux have a password assigned. You can change the password using the passwd command
+When you want to change your password, you can type :
+passwd
+When you are root , you can set the username for which you want to change the password :
+passwd
+
+ping
+    
+This command pings a specific network host, on the local network or on the internet
+Syntax is ping where could be a domain name or an IP address
+This command sends a request to the server and the server returns a response
+ping keeps sending the request every second by default. It will keep running until you stop it with ctrl - c unless you pass the number of times you want to try with the -c option: ping -c google.com
+
+clear
+    
+Used to clear all the previous commands that were run in the current terminal
+The screen will clear
+
+crontab
+    
+Cron jobs are jobs that are scheduled to run at specific intervals. You might have a command perform something every hour, or every day, or every 2 weeks. Or on weekends.
+They are very powerful, especially when used on servers to perform maintenance and automations.
+crontab -l - exploring which cronjobs are defined by you
+
+uname
+    
+This will return the Operating System codename eg Linux
+uname -mp - The m option shows the hardware name and the p option prints the processor architecture
+uname -a - This will print all the information available
+
+References
+    
+https://www.freecodecamp.org/news/the-linux-commands-handbook/
+
+    
+  ">
+<meta
+  property="og:type"
+  content="
+    article
+  ">
+<meta property="og:url" content="//:1313/docs/shell-commands/"><meta property="article:section" content="docs">
+
+<meta
+  property="article:published_time"
+  content="2026-01-23T00:00:00+00:00">
+
+
+<meta
+  property="article:modified_time"
+  content="2026-01-23T00:00:00+00:00">
+
+
+
+  <meta itemprop="name" content="shell-commands">
+  <meta itemprop="description" content="Date: 2026-01-23 Intro When you type a command in the terminal, your system looks for the executable file in the directories listed in the $PATH variable. If a directory isn’t in $PATH, you must specify the full path to run a script.
+Use any of the following options to get more information about linux commands:
+man commandName info commandName commandName -h commandName –help env This command will show special variables ls This command is used when listing all the files that are inside a container. It has several combinations such as -al which returns more detailed information about the files inside a particular folder. lsblk This command will show the disks and their partitions info of your pc cat This command is used to show the contents of a file eg
+cat /etc/systemd/network.sh cd The change directory command makes it possible for you to move inside a specified path/folder. by using cd .. ,you move to the previous directory/parent folder. pwd This command is used to know which directory you are in, by running it ,it will print the current folder path mkdir This command is used to create folders YOu can create multiple folders with one command: mkdir dogs people You can also create multiple nested folders by adding the -p option: mkdir -p fruits/apples rmdir Used to delete a folder or multiple folders at once ( The folder must be empty) To delete folders with files in them (rm -rf fruits people) mv Used to move a file by specifying the file’s current path and its new path (mv pear new_pear) - Renaming files and folders If the last parameter is a folder, the file located at the first parameter is going to be moved into the folder (mv pear apple fruits) - pear and apple moved to the fruits folder cp Used to copy a file To copy folders, you need to add the -r to recursively copy the whole folder contents (cp -r fruits people) touch Used to create an empty file eg touch apple open Used to open a directory (open .) - opens the current directory Can also be used to open an application find The find command can be used to find files or folders matching a particular search pattern. It searches recursively (find . -name ‘*.js’) - Find all files under the current tree that have the .js extension and print the relative path of each file that matches (find . -type d name src) - Find directories under the current tree matching the name ‘src’ (find folder 1 folder 2 -name filename.txt) - Searching under multiple root trees (find . -type d -name node_modules -or -name public) - Find directories under the current tree matching the name ’node_modules’ or ‘public’ (find . -type d -name ‘.md’ -not -path ’node_modules/’) - excluding a path (find . -type f -size &#43;100c) - Searching files that have more than 100 characters(bytes) in them (find . -type f -size &#43;100k -size -1M) - Searching files bigger tha 100KB but smaller than 1MB (find . -type f -mtime &#43;3) - Searching files edited more that 3 days ago (find . -type f -mtime -1) - Searching files edited in the last 24 hrs ln Used to create links(Pointer to another file) There are two types of links(hard links and soft links Hard links are rarely used. You cant link to directories and external filesystems (ln recipes.txt newrecipes.txt) - Creating a hard link Soft links are different. They are more powerful as you can link to other filesystems and to directories but when the original is removed, the link will be broken (ln -s recipes.txt newrecipes.txt) - Creating a soft link gzip Used for compressing a file (gzip filename) - This will compress the file and append the .gz extension to it and the original file is deleted. To prevent this, use the -c option and use the output redirection to write the output to the filename.gz file. ( gzip -c filename &gt; filename.gz) (gzip -d filename.gz) - Decompressing the file gunzip Basically the equivalent of gzip only that when decompressing, no need for adding the -d tar Used to create an archive, grouping multiple files in a single file (tar -cf archive.tar file1 file2) - Creates an archive named archive.tar with the content of file1 file2 (tar -xf archive.tar) - Extract files from an archive in the current folder alias This is like creating a new command to mimic an existing command so that you dont use the existing command according to your preferences (alias ll = ’ls -al’) - Creating a new command ’ll’ that is an alias to ’ls -al’ (alias) - will list all the aliases defined The alias will work until the terminal sessions is closed To make it permanent, add it to the shell configuration tail Opens the file at the end and watches for file changes Great for watching log files ( tail -f /var/log/system.log ) grep Used to search in lines or can be combined with pipes to filter the output of another command (grep “error” logfile.txt) - Finds and prints all lines in logfile.txt containing the word “error” (grep “hello” file1.txt file2.txt) - Searches for “hello” in both files You can use -i to ignore case sensitivity (grep -i “error” logfile.txt) - Finds “Error”, “error” ,etc Can also be used in searching in the output of another command as shown in the next line ps aux | grep “firefox” (grep -v “error” logfile.txt) - Inverting the search ie exclude all lines that contain the pattern (grep -n “command” logfile.txt) - Shows the line numbers where “command” has appeared (grep -c “error” logfile.txt) - counts the number of lines containing “error” (grep “^hello” file.txt) - search for lines that start with “hello” (grep “done$” file.txt) - search for files that end with “done” sort Used in sorting elements in a file (sort -r filename.txt) - Reverses the order of sorting Can work with pipes,i.e you can use it on the output of another command ls | sort echo echo “Hello world” - prints a simple messsage name=“John”, echo “Hello $name” - This will print the value of variable echo “Hello, file” &gt; output.txt - This will direct the output to a file but will override the contents of that file echo “Hello file” » output.txt - This will append or add another line at the end of output.txt echo “Today is $(date) - Using echo with other commands chown Every file/directory in linux has an owner This command is used to change the owner of the file or directory The owner of a directory/ file or the root user are eligible to use this command sudo chown astro test.txt - Transferring the file ownership to astro chown -R - Changing the ownership of a directory and all other files in it. chown : - Through this command,I can simulataneousy change the owner and the group of the file chgrp - Directly changing the group of the file chmod Used to change the permissions of a file Every file has 3 permissions (read, write and execute) For example if a go into a directory and run ls -al, the following is displayed :
+drwxrwxr-x 4 astro astro 4096 Feb 9 11:33 .
+drwxr-x— 31 astro astro 4096 Feb 12 14:50 ..
+drwxrwxr-x 8 astro astro 4096 Feb 13 12:32 .git
+drwxrwxr-x 2 astro astro 4096 Feb 13 12:39 linux-basics
+-rw-rw-r– 1 astro astro 163 Feb 9 11:32 README.md The letters and hyphens you see at the start of every file/folder are the permissions given of the file/folder (-) means its a normal file (d) means its a directory (l) means its a link After that, the first 3 values eg rwx represents the permissions of the owner of the file/directory The next 3 values eg r-x represents the permissions of the group of the file The last 3 values eg — represents the permissions of the other members or everyone else that comes across the file rwx means that person has read, write and execute permissions of the file/directory If either of the rwx values is swapped with - ,that means that person lacks the swapped permission eg : r-x means the person has read and execute permission but lacks the write permission You can change the permissions using the chmod command Changing permissions using numeric notation discussed below :
+Each Permission has a numeric value :
+r = 4
+w = 2
+x = 1 chmod 755 file.txt - This command sets the owner : rwx (7), Group r-x (5) and others r-x (5) Changing the permissions using symbolic notation as shown below :
+u = Owner
+g = Group
+o = Others chmod u&#43;w file.txt - This adds the write permission to the Owner chmod g-x file.txt - This removes the execute permission from the group chmod o&#43;r file.txt - This adds the read permission for others du This command will calculate the size of a directory as a whole du * - This will calculate the size of each file individually du -m - Displaying the size in Megabytes du -g - Displaying the size in Gigabytes du -ah - -a wil print the size of each file, -h will show a human readable notation for sizes df Used to get disk usage information Its basic form will print information about volumes mounted df -h will show the values in human readable format ps Used to inspect processes that are running on your machine ps ax - “a” will list other users’ processes apart from yours and “x” will show other processes not linked to any terminal You can search for a specific process combining grep with a pipe as shown below :
+ps ax | grep -i “tensorflow” | head pstree Command for displaying processes running on your system in a tree structure top Used to display dynamic real time information about running processes in your machine kill Linux processes can receive signals and react to them therefore we can interact with running programs The kill command is used to terminate a program (kill ). The PID is the process ID We can use the kill command to send other signals apart from terminating a program as follows :
+kill -HUP - hang up - It is sent automatically when a terminal window that started a process is closed before terminating the process
+kill -INT - interrupt - It sends the same signal used when we press ctrl - c in the terminal, which usually terminates the process
+kill -KILL - This is not sent to the process, but to the operating system which immediately stops but not terminate the process
+kill -TERM - terminate - Its the default signal sent by kill
+kill -CONT - continue - Used to resume a stopped process
+kill -STOP - stop is sent to the operating system kernel which immediately stops but does not terminate the process You might see numbers used instead, like kill -1 . In this case,1 corresponds to HUP. 2 corresponds to INT. 9 corresponds to KILL. 15 corresponds to TERM. 18 corresponds to CONT. 15 corresponds to STOP. type A command can be one of these 4 types :
+an executable
+a shell built-in program
+a shell function
+an alias The type command is used to figure out the type of a command type which This will return the path of the command specified man (manual) This command is used to display information about the specified command eg man which whoami This command will print the user name currently logged into the terminal session who This command displays the users logged in to the system su This command is used to switch to another user su sudo Used to run command as a root You must be enabled to use sudo and once you are authorised, you can run commands as root by entering your user’s password You can use sudo to run commands as any user. root is the default but use the -u option to specify another user :
+sudo -u astro ls /Users/flavio passwd Users in linux have a password assigned. You can change the password using the passwd command When you want to change your password, you can type :
+passwd When you are root , you can set the username for which you want to change the password :
+passwd ping This command pings a specific network host, on the local network or on the internet Syntax is ping where could be a domain name or an IP address This command sends a request to the server and the server returns a response ping keeps sending the request every second by default. It will keep running until you stop it with ctrl - c unless you pass the number of times you want to try with the -c option: ping -c google.com clear Used to clear all the previous commands that were run in the current terminal The screen will clear crontab Cron jobs are jobs that are scheduled to run at specific intervals. You might have a command perform something every hour, or every day, or every 2 weeks. Or on weekends. They are very powerful, especially when used on servers to perform maintenance and automations. crontab -l - exploring which cronjobs are defined by you uname This will return the Operating System codename eg Linux uname -mp - The m option shows the hardware name and the p option prints the processor architecture uname -a - This will print all the information available References https://www.freecodecamp.org/news/the-linux-commands-handbook/">
+  <meta itemprop="datePublished" content="2026-01-23T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-01-23T00:00:00+00:00">
+  <meta itemprop="wordCount" content="2268">
+  <meta itemprop="keywords" content="Linux">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="shell-commands">
+  <meta name="twitter:description" content="Date: 2026-01-23 Intro When you type a command in the terminal, your system looks for the executable file in the directories listed in the $PATH variable. If a directory isn’t in $PATH, you must specify the full path to run a script.
+Use any of the following options to get more information about linux commands:
+man commandName info commandName commandName -h commandName –help env This command will show special variables ls This command is used when listing all the files that are inside a container. It has several combinations such as -al which returns more detailed information about the files inside a particular folder. lsblk This command will show the disks and their partitions info of your pc cat This command is used to show the contents of a file eg
+cat /etc/systemd/network.sh cd The change directory command makes it possible for you to move inside a specified path/folder. by using cd .. ,you move to the previous directory/parent folder. pwd This command is used to know which directory you are in, by running it ,it will print the current folder path mkdir This command is used to create folders YOu can create multiple folders with one command: mkdir dogs people You can also create multiple nested folders by adding the -p option: mkdir -p fruits/apples rmdir Used to delete a folder or multiple folders at once ( The folder must be empty) To delete folders with files in them (rm -rf fruits people) mv Used to move a file by specifying the file’s current path and its new path (mv pear new_pear) - Renaming files and folders If the last parameter is a folder, the file located at the first parameter is going to be moved into the folder (mv pear apple fruits) - pear and apple moved to the fruits folder cp Used to copy a file To copy folders, you need to add the -r to recursively copy the whole folder contents (cp -r fruits people) touch Used to create an empty file eg touch apple open Used to open a directory (open .) - opens the current directory Can also be used to open an application find The find command can be used to find files or folders matching a particular search pattern. It searches recursively (find . -name ‘*.js’) - Find all files under the current tree that have the .js extension and print the relative path of each file that matches (find . -type d name src) - Find directories under the current tree matching the name ‘src’ (find folder 1 folder 2 -name filename.txt) - Searching under multiple root trees (find . -type d -name node_modules -or -name public) - Find directories under the current tree matching the name ’node_modules’ or ‘public’ (find . -type d -name ‘.md’ -not -path ’node_modules/’) - excluding a path (find . -type f -size &#43;100c) - Searching files that have more than 100 characters(bytes) in them (find . -type f -size &#43;100k -size -1M) - Searching files bigger tha 100KB but smaller than 1MB (find . -type f -mtime &#43;3) - Searching files edited more that 3 days ago (find . -type f -mtime -1) - Searching files edited in the last 24 hrs ln Used to create links(Pointer to another file) There are two types of links(hard links and soft links Hard links are rarely used. You cant link to directories and external filesystems (ln recipes.txt newrecipes.txt) - Creating a hard link Soft links are different. They are more powerful as you can link to other filesystems and to directories but when the original is removed, the link will be broken (ln -s recipes.txt newrecipes.txt) - Creating a soft link gzip Used for compressing a file (gzip filename) - This will compress the file and append the .gz extension to it and the original file is deleted. To prevent this, use the -c option and use the output redirection to write the output to the filename.gz file. ( gzip -c filename &gt; filename.gz) (gzip -d filename.gz) - Decompressing the file gunzip Basically the equivalent of gzip only that when decompressing, no need for adding the -d tar Used to create an archive, grouping multiple files in a single file (tar -cf archive.tar file1 file2) - Creates an archive named archive.tar with the content of file1 file2 (tar -xf archive.tar) - Extract files from an archive in the current folder alias This is like creating a new command to mimic an existing command so that you dont use the existing command according to your preferences (alias ll = ’ls -al’) - Creating a new command ’ll’ that is an alias to ’ls -al’ (alias) - will list all the aliases defined The alias will work until the terminal sessions is closed To make it permanent, add it to the shell configuration tail Opens the file at the end and watches for file changes Great for watching log files ( tail -f /var/log/system.log ) grep Used to search in lines or can be combined with pipes to filter the output of another command (grep “error” logfile.txt) - Finds and prints all lines in logfile.txt containing the word “error” (grep “hello” file1.txt file2.txt) - Searches for “hello” in both files You can use -i to ignore case sensitivity (grep -i “error” logfile.txt) - Finds “Error”, “error” ,etc Can also be used in searching in the output of another command as shown in the next line ps aux | grep “firefox” (grep -v “error” logfile.txt) - Inverting the search ie exclude all lines that contain the pattern (grep -n “command” logfile.txt) - Shows the line numbers where “command” has appeared (grep -c “error” logfile.txt) - counts the number of lines containing “error” (grep “^hello” file.txt) - search for lines that start with “hello” (grep “done$” file.txt) - search for files that end with “done” sort Used in sorting elements in a file (sort -r filename.txt) - Reverses the order of sorting Can work with pipes,i.e you can use it on the output of another command ls | sort echo echo “Hello world” - prints a simple messsage name=“John”, echo “Hello $name” - This will print the value of variable echo “Hello, file” &gt; output.txt - This will direct the output to a file but will override the contents of that file echo “Hello file” » output.txt - This will append or add another line at the end of output.txt echo “Today is $(date) - Using echo with other commands chown Every file/directory in linux has an owner This command is used to change the owner of the file or directory The owner of a directory/ file or the root user are eligible to use this command sudo chown astro test.txt - Transferring the file ownership to astro chown -R - Changing the ownership of a directory and all other files in it. chown : - Through this command,I can simulataneousy change the owner and the group of the file chgrp - Directly changing the group of the file chmod Used to change the permissions of a file Every file has 3 permissions (read, write and execute) For example if a go into a directory and run ls -al, the following is displayed :
+drwxrwxr-x 4 astro astro 4096 Feb 9 11:33 .
+drwxr-x— 31 astro astro 4096 Feb 12 14:50 ..
+drwxrwxr-x 8 astro astro 4096 Feb 13 12:32 .git
+drwxrwxr-x 2 astro astro 4096 Feb 13 12:39 linux-basics
+-rw-rw-r– 1 astro astro 163 Feb 9 11:32 README.md The letters and hyphens you see at the start of every file/folder are the permissions given of the file/folder (-) means its a normal file (d) means its a directory (l) means its a link After that, the first 3 values eg rwx represents the permissions of the owner of the file/directory The next 3 values eg r-x represents the permissions of the group of the file The last 3 values eg — represents the permissions of the other members or everyone else that comes across the file rwx means that person has read, write and execute permissions of the file/directory If either of the rwx values is swapped with - ,that means that person lacks the swapped permission eg : r-x means the person has read and execute permission but lacks the write permission You can change the permissions using the chmod command Changing permissions using numeric notation discussed below :
+Each Permission has a numeric value :
+r = 4
+w = 2
+x = 1 chmod 755 file.txt - This command sets the owner : rwx (7), Group r-x (5) and others r-x (5) Changing the permissions using symbolic notation as shown below :
+u = Owner
+g = Group
+o = Others chmod u&#43;w file.txt - This adds the write permission to the Owner chmod g-x file.txt - This removes the execute permission from the group chmod o&#43;r file.txt - This adds the read permission for others du This command will calculate the size of a directory as a whole du * - This will calculate the size of each file individually du -m - Displaying the size in Megabytes du -g - Displaying the size in Gigabytes du -ah - -a wil print the size of each file, -h will show a human readable notation for sizes df Used to get disk usage information Its basic form will print information about volumes mounted df -h will show the values in human readable format ps Used to inspect processes that are running on your machine ps ax - “a” will list other users’ processes apart from yours and “x” will show other processes not linked to any terminal You can search for a specific process combining grep with a pipe as shown below :
+ps ax | grep -i “tensorflow” | head pstree Command for displaying processes running on your system in a tree structure top Used to display dynamic real time information about running processes in your machine kill Linux processes can receive signals and react to them therefore we can interact with running programs The kill command is used to terminate a program (kill ). The PID is the process ID We can use the kill command to send other signals apart from terminating a program as follows :
+kill -HUP - hang up - It is sent automatically when a terminal window that started a process is closed before terminating the process
+kill -INT - interrupt - It sends the same signal used when we press ctrl - c in the terminal, which usually terminates the process
+kill -KILL - This is not sent to the process, but to the operating system which immediately stops but not terminate the process
+kill -TERM - terminate - Its the default signal sent by kill
+kill -CONT - continue - Used to resume a stopped process
+kill -STOP - stop is sent to the operating system kernel which immediately stops but does not terminate the process You might see numbers used instead, like kill -1 . In this case,1 corresponds to HUP. 2 corresponds to INT. 9 corresponds to KILL. 15 corresponds to TERM. 18 corresponds to CONT. 15 corresponds to STOP. type A command can be one of these 4 types :
+an executable
+a shell built-in program
+a shell function
+an alias The type command is used to figure out the type of a command type which This will return the path of the command specified man (manual) This command is used to display information about the specified command eg man which whoami This command will print the user name currently logged into the terminal session who This command displays the users logged in to the system su This command is used to switch to another user su sudo Used to run command as a root You must be enabled to use sudo and once you are authorised, you can run commands as root by entering your user’s password You can use sudo to run commands as any user. root is the default but use the -u option to specify another user :
+sudo -u astro ls /Users/flavio passwd Users in linux have a password assigned. You can change the password using the passwd command When you want to change your password, you can type :
+passwd When you are root , you can set the username for which you want to change the password :
+passwd ping This command pings a specific network host, on the local network or on the internet Syntax is ping where could be a domain name or an IP address This command sends a request to the server and the server returns a response ping keeps sending the request every second by default. It will keep running until you stop it with ctrl - c unless you pass the number of times you want to try with the -c option: ping -c google.com clear Used to clear all the previous commands that were run in the current terminal The screen will clear crontab Cron jobs are jobs that are scheduled to run at specific intervals. You might have a command perform something every hour, or every day, or every 2 weeks. Or on weekends. They are very powerful, especially when used on servers to perform maintenance and automations. crontab -l - exploring which cronjobs are defined by you uname This will return the Operating System codename eg Linux uname -mp - The m option shows the hardware name and the p option prints the processor architecture uname -a - This will print all the information available References https://www.freecodecamp.org/news/the-linux-commands-handbook/">
+<link href="/css/compiled/main.css" rel="stylesheet" />
+    <link href="/css/variables.css" rel="stylesheet" />
+    <link href="/css/custom.css" rel="stylesheet" />
+
+  
+
+
+  <script>
+    
+
+    function setTheme(theme) {
+      document.documentElement.classList.remove("light", "dark");
+
+      if (theme !== "light" && theme !== "dark") {
+       theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+
+      document.documentElement.classList.add(theme);
+      document.documentElement.style.colorScheme = theme;
+    }
+
+    setTheme("color-theme" in localStorage ? localStorage.getItem("color-theme") : 'system')
+
+  </script>
+
+  <script>
+    
+
+    if (localStorage.getItem('banner-closed')) {
+      document.documentElement.style.setProperty("--hextra-banner-height", "0px");
+      document.documentElement.classList.add("hextra-banner-hidden");
+    }
+  </script>
+
+  
+  
+  </head>
+<body><div class="hextra-nav-container hx:sticky hx:top-0 hx:z-20 hx:w-full hx:bg-transparent hx:print:hidden">
+  <div class="hextra-nav-container-blur hx:pointer-events-none hx:absolute hx:z-[-1] hx:h-full hx:w-full hx:bg-white hx:dark:bg-dark hx:shadow-sm"></div>
+  
+  <nav class="hextra-max-navbar-width hx:mx-auto hx:flex hx:items-center hx:justify-between hx:gap-2 hx:h-16 hx:px-6">
+    
+    <a class="hx:flex hx:items-center hx:hover:opacity-75 hx:ltr:mr-auto hx:rtl:ml-auto" href="/">
+      <span class="hx:font-extrabold hx:inline hx:select-none" title="Diing">Diing</span>
+    </a>
+
+    <div class="hx:grow"></div>
+
+    <div class="hextra-search-wrapper hx:relative hx:w-64">
+      <div class="hx:relative hx:flex hx:items-center hx:text-gray-900 hx:dark:text-gray-300">
+        <input 
+          type="search" 
+          placeholder="Search ...." 
+          class="hextra-search-input hx:block hx:w-full hx:appearance-none hx:rounded-lg hx:px-3 hx:py-2 hx:transition-colors hx:text-base hx:leading-tight hx:md:text-sm hx:focus:outline-none" 
+          spellcheck="false"
+        >
+      </div>
+      <ul class="hextra-search-results hextra-scrollbar hx:hidden hx:border hx:border-gray-200 hx:bg-white hx:text-gray-100 hx:dark:border-neutral-800 hx:dark:bg-neutral-900 hx:absolute hx:top-full hx:z-20 hx:mt-2 hx:overflow-auto hx:overscroll-contain hx:rounded-xl hx:py-2.5 hx:shadow-xl hx:max-h-[400px] hx:w-full"></ul>
+    </div>
+
+    <button type="button" aria-label="Menu" class="hextra-hamburger-menu hx:cursor-pointer hx:-mr-2 hx:p-2 hx:md:hidden">
+      <svg height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8H20M4 16H20"></path></svg>
+    </button>
+
+  </nav>
+</div>
+
+  <div class='hx:mx-auto hx:flex hextra-max-page-width'>
+    <aside class="hextra-sidebar-container hx:flex hx:flex-col hx:print:hidden hx:md:top-16 hx:md:shrink-0 hx:md:w-64 hx:md:self-start hx:max-md:[transform:translate3d(0,-100%,0)] hx:md:sticky">
+  
+  <div class="hx:px-4 hx:pt-4 hx:md:hidden">
+    <div class="hextra-search-wrapper hx:relative hx:md:w-64">
+  <div class="hx:relative hx:flex hx:items-center hx:text-gray-900 hx:contrast-more:text-gray-800 hx:dark:text-gray-300 hx:contrast-more:dark:text-gray-300">
+    <input
+      placeholder="Search..."
+      class="hextra-search-input hx:focus:hextra-focus hx:block hx:w-full hx:appearance-none hx:rounded-lg hx:px-3 hx:py-2 hx:transition-colors hx:text-base hx:leading-tight hx:md:text-sm hx:bg-black/[.05] hx:dark:bg-gray-50/10 hx:focus:bg-white hx:dark:focus:bg-dark hx:placeholder:text-gray-500 hx:dark:placeholder:text-gray-400 hx:contrast-more:border hx:contrast-more:border-current"
+      type="search"
+      value=""
+      spellcheck="false"
+    />
+    <kbd
+      class="hx:absolute hx:my-1.5 hx:select-none hx:ltr:right-1.5 hx:rtl:left-1.5 hx:h-5 hx:rounded-sm hx:bg-white hx:px-1.5 hx:font-mono hx:text-[10px] hx:font-medium hx:text-gray-500 hx:border hx:border-gray-200 hx:dark:border-gray-100/20 hx:dark:bg-dark/50 hx:contrast-more:border-current hx:contrast-more:text-current hx:contrast-more:dark:border-current hx:items-center hx:gap-1 hx:transition-opacity hx:pointer-events-none hx:hidden hx:sm:flex"
+    >
+      CTRL K
+    </kbd>
+  </div>
+
+  <div>
+    <ul
+      class="hextra-search-results hextra-scrollbar hx:hidden hx:border hx:border-gray-200 hx:bg-white hx:text-gray-100 hx:dark:border-neutral-800 hx:dark:bg-neutral-900 hx:absolute hx:top-full hx:z-20 hx:mt-2 hx:overflow-auto hx:overscroll-contain hx:rounded-xl hx:py-2.5 hx:shadow-xl hx:max-h-[min(calc(50vh-11rem-env(safe-area-inset-bottom)),400px)] hx:md:max-h-[min(calc(100vh-5rem-env(safe-area-inset-bottom)),400px)] hx:inset-x-0 hx:ltr:md:left-auto hx:rtl:md:right-auto hx:contrast-more:border hx:contrast-more:border-gray-900 hx:contrast-more:dark:border-gray-50 hx:w-screen hx:min-h-[100px] hx:max-w-[min(calc(100vw-2rem),calc(100%+20rem))]"
+      style="transition: max-height 0.2s ease 0s;"
+    ></ul>
+  </div>
+</div>
+
+  </div>
+  <div class="hextra-scrollbar hx:overflow-y-auto hx:overflow-x-hidden hx:p-4 hx:grow hx:md:h-[calc(100vh-var(--navbar-height)-var(--menu-height))]">
+    <ul class="hx:flex hx:flex-col hx:gap-1 hx:md:hidden">
+      
+      
+          <li class="open"><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/"
+    
+  >Docs
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></span>
+    </a><div class="hx:ltr:pr-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/bash-scripting/"
+    
+  >bash-scripting
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/disk-partitioning/"
+    
+  >disk-partitioning
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/linux-boot-process/"
+    
+  >linux-boot-process
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/linux-file-system/"
+    
+  >linux-file-system
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/networking-fundamentals/"
+    
+  >networking-fundamentals
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/openssh/"
+    
+  >openssh
+    </a>
+              
+            </li><li class="hx:flex hx:flex-col open"><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
+    href="/docs/shell-commands/"
+    
+  >shell-commands
+    </a>
+  
+    <ul class='hx:flex hx:flex-col hx:gap-1 hx:relative hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:dark:before:bg-neutral-800 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:pr-3 hx:rtl:before:right-0 hx:ltr:ml-3 hx:rtl:mr-3'><li>
+              <a
+                href="#intro"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >Intro</a>
+            </li>
+          <li>
+              <a
+                href="#env"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >env</a>
+            </li>
+          <li>
+              <a
+                href="#ls"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >ls</a>
+            </li>
+          <li>
+              <a
+                href="#lsblk"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >lsblk</a>
+            </li>
+          <li>
+              <a
+                href="#cd"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >cd</a>
+            </li>
+          <li>
+              <a
+                href="#pwd"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >pwd</a>
+            </li>
+          <li>
+              <a
+                href="#mkdir"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >mkdir</a>
+            </li>
+          <li>
+              <a
+                href="#rmdir"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >rmdir</a>
+            </li>
+          <li>
+              <a
+                href="#mv"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >mv</a>
+            </li>
+          <li>
+              <a
+                href="#cp"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >cp</a>
+            </li>
+          <li>
+              <a
+                href="#touch"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >touch</a>
+            </li>
+          <li>
+              <a
+                href="#open"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >open</a>
+            </li>
+          <li>
+              <a
+                href="#find"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >find</a>
+            </li>
+          <li>
+              <a
+                href="#ln"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >ln</a>
+            </li>
+          <li>
+              <a
+                href="#gzip"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >gzip</a>
+            </li>
+          <li>
+              <a
+                href="#gunzip"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >gunzip</a>
+            </li>
+          <li>
+              <a
+                href="#tar"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >tar</a>
+            </li>
+          <li>
+              <a
+                href="#alias"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >alias</a>
+            </li>
+          <li>
+              <a
+                href="#tail"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >tail</a>
+            </li>
+          <li>
+              <a
+                href="#grep"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >grep</a>
+            </li>
+          <li>
+              <a
+                href="#sort"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >sort</a>
+            </li>
+          <li>
+              <a
+                href="#echo"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >echo</a>
+            </li>
+          <li>
+              <a
+                href="#chown"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >chown</a>
+            </li>
+          <li>
+              <a
+                href="#chmod"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >chmod</a>
+            </li>
+          <li>
+              <a
+                href="#du"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >du</a>
+            </li>
+          <li>
+              <a
+                href="#df"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >df</a>
+            </li>
+          <li>
+              <a
+                href="#ps"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >ps</a>
+            </li>
+          <li>
+              <a
+                href="#pstree"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >pstree</a>
+            </li>
+          <li>
+              <a
+                href="#top"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >top</a>
+            </li>
+          <li>
+              <a
+                href="#kill"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >kill</a>
+            </li>
+          <li>
+              <a
+                href="#type"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >type</a>
+            </li>
+          <li>
+              <a
+                href="#which"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >which</a>
+            </li>
+          <li>
+              <a
+                href="#man-manual"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >man (manual)</a>
+            </li>
+          <li>
+              <a
+                href="#whoami"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >whoami</a>
+            </li>
+          <li>
+              <a
+                href="#who"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >who</a>
+            </li>
+          <li>
+              <a
+                href="#su"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >su</a>
+            </li>
+          <li>
+              <a
+                href="#sudo"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >sudo</a>
+            </li>
+          <li>
+              <a
+                href="#passwd"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >passwd</a>
+            </li>
+          <li>
+              <a
+                href="#ping"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >ping</a>
+            </li>
+          <li>
+              <a
+                href="#clear"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >clear</a>
+            </li>
+          <li>
+              <a
+                href="#crontab"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >crontab</a>
+            </li>
+          <li>
+              <a
+                href="#uname"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >uname</a>
+            </li>
+          <li>
+              <a
+                href="#references"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >References</a>
+            </li>
+          </ul>
+  
+              
+            </li><li class="hx:flex hx:flex-col "><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/systemd/"
+    
+  >systemd
+    </a>
+              
+            </li></ul>
+      </div></li>
+    </ul>
+
+    <ul class="hx:flex hx:flex-col hx:gap-1 hx:max-md:hidden">
+        
+          <li class=""><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/bash-scripting/"
+    
+  >bash-scripting
+    </a></li>
+          <li class=""><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/disk-partitioning/"
+    
+  >disk-partitioning
+    </a></li>
+          <li class=""><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/linux-boot-process/"
+    
+  >linux-boot-process
+    </a></li>
+          <li class=""><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/linux-file-system/"
+    
+  >linux-file-system
+    </a></li>
+          <li class=""><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/networking-fundamentals/"
+    
+  >networking-fundamentals
+    </a></li>
+          <li class=""><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/openssh/"
+    
+  >openssh
+    </a></li>
+          <li class="open"><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
+    href="/docs/shell-commands/"
+    
+  >shell-commands
+    </a></li>
+          <li class=""><a
+    class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+    href="/docs/systemd/"
+    
+  >systemd
+    </a></li>
+        
+      </ul>
+    </div>
+  
+  
+    <div class="  hx:sticky hx:bottom-0 hx:max-h-(--menu-height) hx:bg-white hx:dark:bg-dark hx:mx-4 hx:py-4 hx:shadow-[0_-12px_16px_#fff] hx:flex hx:items-center hx:gap-2 hx:border-gray-200 hx:dark:border-neutral-800 hx:dark:shadow-[0_-12px_16px_#111] hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:shadow-none hx:border-t" data-toggle-animation="show"><div class="hx:flex hx:grow hx:flex-col"><div class="hx:flex hx:justify-items-start hx:group" data-theme="light">
+  <button
+    title="Change theme"
+    data-state="closed"
+    data-location="bottom"
+    class="hextra-theme-toggle hx:cursor-pointer hx:rounded-md hx:text-left hx:font-medium hx:h-7 hx:px-2 hx:text-xs hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:font-medium hx:text-gray-600 hx:transition-colors hx:dark:text-gray-400 hx:grow"
+    type="button"
+    aria-label="Change theme"
+  >
+    <div class="hx:flex hx:items-center hx:gap-2 hx:capitalize"><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden">Light</span><svg height=12 class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg><span class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden">Dark</span><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="currentColor">
+  <path d="M 11.996094,2 C 6.4986225,2.0192368 2.03125,6.5024993 2.03125,12 c 0,5.497501 4.4673725,9.980763 9.964844,10 H 12 12.0039 c 5.497471,-0.01924 9.964844,-4.502499 9.964844,-10 0,-5.4975007 -4.467373,-9.9807632 -9.964844,-10 H 12 Z M 12,4 c 4.417218,0.017598 7.96875,3.5822356 7.96875,8 0,4.417764 -3.551532,7.982402 -7.96875,8 z" />
+</svg>
+<span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden">System</span></div>
+  </button>
+  <ul
+    class="hextra-theme-toggle-options hx:hidden hx:z-20 hx:max-h-64 hx:overflow-auto hx:rounded-md hx:ring-1 hx:ring-black/5 hx:bg-white hx:py-1 hx:text-sm hx:shadow-lg hx:dark:ring-white/20 hx:dark:bg-neutral-800"
+    style="position: fixed; inset: auto auto 0px 0px; margin: 0px; min-width: 100px;"
+    data-theme="light"
+  >
+    <li class="hx:flex hx:flex-col">
+      <p
+        data-item="light"
+        class="hx:text-gray-800 hx:dark:text-gray-100 hx:hover:bg-primary-50 hx:hover:text-primary-600 hx:hover:dark:bg-primary-500/10 hx:hover:dark:text-primary-600 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9"
+      >
+        Light
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </p>
+    </li>
+    <li class="hx:flex hx:flex-col">
+      <p
+        data-item="dark"
+        class="hx:text-gray-800 hx:dark:text-gray-100 hx:hover:bg-primary-50 hx:hover:text-primary-600 hx:hover:dark:bg-primary-500/10 hx:hover:dark:text-primary-600 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9"
+      >
+        Dark
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </p>
+    </li>
+    <li class="hx:flex hx:flex-col">
+      <p
+        data-item="system"
+        class="hx:text-gray-800 hx:dark:text-gray-100 hx:hover:bg-primary-50 hx:hover:text-primary-600 hx:hover:dark:bg-primary-500/10 hx:hover:dark:text-primary-600 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9"
+      >
+        System
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </p>
+    </li>
+  </ul>
+</div></div></div></aside>
+    
+<nav class="hextra-toc hx:order-last hx:hidden hx:w-64 hx:shrink-0 hx:xl:block hx:print:hidden hx:px-4" aria-label="table of contents">
+    <div class="hextra-scrollbar hx:sticky hx:top-16 hx:overflow-y-auto hx:pr-4 hx:pt-6 hx:text-sm [hyphens:auto] hx:max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] hx:ltr:-mr-4 hx:rtl:-ml-4"><p class="hx:mb-4 hx:font-semibold hx:tracking-tight">On this page</p><ul>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#intro">Intro
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#env">env
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#ls">ls
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#lsblk">lsblk
+        </a>
+      </li></ul><ul>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#cd">cd
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#pwd">pwd
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#mkdir">mkdir
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#rmdir">rmdir
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#mv">mv
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#cp">cp
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#touch">touch
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#open">open
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#find">find
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#ln">ln
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#gzip">gzip
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#gunzip">gunzip
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#tar">tar
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#alias">alias
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#tail">tail
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#grep">grep
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#sort">sort
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#echo">echo
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#chown">chown
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#chmod">chmod
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#du">du
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#df">df
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#ps">ps
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#pstree">pstree
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#top">top
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#kill">kill
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#type">type
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#which">which
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#man-manual">man (manual)
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#whoami">whoami
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#who">who
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#su">su
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#sudo">sudo
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#passwd">passwd
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#ping">ping
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#clear">clear
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#crontab">crontab
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#uname">uname
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:break-words" href="#references">References
+        </a>
+      </li></ul>
+      <div class="hx:mt-8 hx:border-t hx:bg-white hx:pt-8 hx:shadow-[0_-12px_16px_white] hx:dark:bg-dark hx:dark:shadow-[0_-12px_16px_#111] hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400">
+        <button aria-hidden="true" id="backToTop" onClick="scrollUp();" class="hx:cursor-pointer hx:transition-all hx:duration-75 hx:opacity-0 hx:text-xs hx:font-medium hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-100 hx:contrast-more:text-gray-800 hx:contrast-more:dark:text-gray-50">
+          <span>Scroll to top</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hx:inline hx:ltr:ml-1 hx:rtl:mr-1 hx:h-3.5 hx:w-3.5 hx:rounded-full hx:border hx:border-gray-500 hx:hover:border-gray-900 hx:dark:border-gray-400 hx:dark:hover:border-gray-100 hx:contrast-more:border-gray-800 hx:contrast-more:dark:border-gray-50">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main class="hx:w-full hx:min-w-0 hx:max-w-6xl hx:px-6 hx:pt-4 hx:md:px-12">
+        <div class="hx:mt-1.5 hx:flex hx:items-center hx:gap-1 hx:overflow-hidden hx:text-sm hx:text-gray-500 hx:dark:text-gray-400 hx:contrast-more:text-current">
+        <div class="hx:whitespace-nowrap hx:transition-colors hx:min-w-[24px] hx:overflow-hidden hx:text-ellipsis hx:hover:text-gray-900 hx:dark:hover:text-gray-100">
+          <a href="/docs/">Docs</a>
+        </div><svg class="hx:w-3.5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx:whitespace-nowrap hx:transition-colors hx:font-medium hx:text-gray-700 hx:contrast-more:font-bold hx:contrast-more:text-current hx:dark:text-gray-100 hx:contrast-more:dark:text-current">shell-commands</div>
+  </div>
+
+        <div class="content">
+          <h1>shell-commands</h1>
+          <p><em>Date: 2026-01-23</em>
+<div class="hx-flex hx-flex-wrap hx-gap-2 hx-mt-4">
+  
+</div>
+</p>
+<h2>Intro<span class="hx:absolute hx:-mt-20" id="intro"></span>
+    <a href="#intro" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>When you type a command in the terminal, your system looks for the executable file in the directories listed in the $PATH variable. If a directory isn&rsquo;t in $PATH, you must specify the full path to run a script.</p>
+<p>Use any of the following options to get more information about linux commands:</p>
+<ul>
+<li>man commandName</li>
+<li>info commandName</li>
+<li>commandName -h</li>
+<li>commandName &ndash;help</li>
+</ul>
+<h2>env<span class="hx:absolute hx:-mt-20" id="env"></span>
+    <a href="#env" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>This command will show special variables</li>
+</ul>
+<h2>ls<span class="hx:absolute hx:-mt-20" id="ls"></span>
+    <a href="#ls" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>This command is used when listing all the files that are inside a container.</li>
+<li>It has several combinations such as -al which returns more detailed information about the files inside a particular folder.</li>
+</ul>
+<h2>lsblk<span class="hx:absolute hx:-mt-20" id="lsblk"></span>
+    <a href="#lsblk" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>This command will show the disks and their partitions info of your pc</li>
+</ul>
+<h1>cat</h1><ul>
+<li>This command is used to show the contents of a file eg<br>
+cat /etc/systemd/network.sh</li>
+</ul>
+<h2>cd<span class="hx:absolute hx:-mt-20" id="cd"></span>
+    <a href="#cd" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>The change directory command makes it possible for you to move inside a specified path/folder.</li>
+<li>by using cd .. ,you move to the previous directory/parent folder.</li>
+</ul>
+<h2>pwd<span class="hx:absolute hx:-mt-20" id="pwd"></span>
+    <a href="#pwd" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>This command is used to know which directory you are in, by running it ,it will print the current folder path</li>
+</ul>
+<h2>mkdir<span class="hx:absolute hx:-mt-20" id="mkdir"></span>
+    <a href="#mkdir" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>This command is used to create folders</li>
+<li>YOu can create multiple folders with one command: mkdir dogs people</li>
+<li>You can also create multiple nested folders by adding the -p option: mkdir -p fruits/apples</li>
+</ul>
+<h2>rmdir<span class="hx:absolute hx:-mt-20" id="rmdir"></span>
+    <a href="#rmdir" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used to delete a folder or multiple folders at once ( The folder must be empty)</li>
+<li>To delete folders with files in them (rm -rf fruits people)</li>
+</ul>
+<h2>mv<span class="hx:absolute hx:-mt-20" id="mv"></span>
+    <a href="#mv" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used to move a file by specifying the file&rsquo;s current path and its new path</li>
+<li>(mv pear new_pear) - Renaming files and folders</li>
+<li>If the last parameter is a folder, the file located at the first parameter is going to be moved into the folder</li>
+<li>(mv pear apple fruits) - pear and apple moved to the fruits folder</li>
+</ul>
+<h2>cp<span class="hx:absolute hx:-mt-20" id="cp"></span>
+    <a href="#cp" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used to copy a file</li>
+<li>To copy folders, you need to add the -r to recursively copy the whole folder contents (cp -r fruits people)</li>
+</ul>
+<h2>touch<span class="hx:absolute hx:-mt-20" id="touch"></span>
+    <a href="#touch" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used to create an empty file eg touch apple</li>
+</ul>
+<h2>open<span class="hx:absolute hx:-mt-20" id="open"></span>
+    <a href="#open" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used to open a directory</li>
+<li>(open .) - opens the current directory</li>
+<li>Can also be used to open an application</li>
+</ul>
+<h2>find<span class="hx:absolute hx:-mt-20" id="find"></span>
+    <a href="#find" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>The find command can be used to find files or folders matching a particular search pattern. It searches recursively</li>
+<li>(find . -name &lsquo;*.js&rsquo;) - Find all files under the current tree that have the .js extension and print the relative path of each file that matches</li>
+<li>(find . -type d name src) - Find directories under the current tree matching the name &lsquo;src&rsquo;</li>
+<li>(find folder 1 folder 2 -name filename.txt) - Searching under multiple root trees</li>
+<li>(find . -type d -name node_modules -or -name public) - Find directories under the current tree matching the name &rsquo;node_modules&rsquo; or &lsquo;public&rsquo;</li>
+<li>(find . -type d -name &lsquo;<em>.md&rsquo; -not -path &rsquo;node_modules/</em>&rsquo;) - excluding a path</li>
+<li>(find . -type f -size +100c) - Searching files that have more than 100 characters(bytes) in them</li>
+<li>(find . -type f -size +100k -size -1M) - Searching files bigger tha 100KB but smaller than 1MB</li>
+<li>(find . -type f -mtime +3) - Searching files edited more that 3 days ago</li>
+<li>(find . -type f -mtime -1) - Searching files edited in the last 24 hrs</li>
+</ul>
+<h2>ln<span class="hx:absolute hx:-mt-20" id="ln"></span>
+    <a href="#ln" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used to create links(Pointer to another file)</li>
+<li>There are two types of links(hard links and soft links</li>
+<li>Hard links are rarely used. You cant link to directories and external filesystems</li>
+<li>(ln recipes.txt newrecipes.txt) - Creating a hard link</li>
+<li>Soft links are different. They are more powerful as you can link to other filesystems and to directories but when the original is removed, the link will be broken</li>
+<li>(ln -s recipes.txt newrecipes.txt) - Creating a soft link</li>
+</ul>
+<h2>gzip<span class="hx:absolute hx:-mt-20" id="gzip"></span>
+    <a href="#gzip" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used for compressing a file</li>
+<li>(gzip filename) - This will compress the file and append the .gz extension to it and the original file is deleted. To prevent this, use the -c option and use the output redirection to write the output to the filename.gz file. ( gzip -c filename &gt; filename.gz)</li>
+<li>(gzip -d filename.gz) - Decompressing the file</li>
+</ul>
+<h2>gunzip<span class="hx:absolute hx:-mt-20" id="gunzip"></span>
+    <a href="#gunzip" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Basically the equivalent of gzip only that when decompressing, no need for adding the -d</li>
+</ul>
+<h2>tar<span class="hx:absolute hx:-mt-20" id="tar"></span>
+    <a href="#tar" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used to create an archive, grouping multiple files in a single file</li>
+<li>(tar -cf archive.tar file1 file2) - Creates an archive named archive.tar with the content of file1 file2</li>
+<li>(tar -xf archive.tar) - Extract files from an archive in the current folder</li>
+</ul>
+<h2>alias<span class="hx:absolute hx:-mt-20" id="alias"></span>
+    <a href="#alias" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>This is like creating a new command to mimic an existing command so that you dont use the existing command according to your preferences</li>
+<li>(alias ll = &rsquo;ls -al&rsquo;) - Creating a new command &rsquo;ll&rsquo; that is an alias to &rsquo;ls -al&rsquo;</li>
+<li>(alias) - will list all the aliases defined</li>
+<li>The alias will work until the terminal sessions is closed</li>
+<li>To make it permanent, add it to the shell configuration</li>
+</ul>
+<h2>tail<span class="hx:absolute hx:-mt-20" id="tail"></span>
+    <a href="#tail" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Opens the file at the end and watches for file changes</li>
+<li>Great for watching log files ( tail -f /var/log/system.log )</li>
+</ul>
+<h2>grep<span class="hx:absolute hx:-mt-20" id="grep"></span>
+    <a href="#grep" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used to search in lines or can be combined with pipes to filter the output of another command</li>
+<li>(grep &ldquo;error&rdquo; logfile.txt) - Finds and prints all lines in logfile.txt containing the word &ldquo;error&rdquo;</li>
+<li>(grep &ldquo;hello&rdquo; file1.txt file2.txt) - Searches for &ldquo;hello&rdquo; in both files</li>
+<li>You can use -i to ignore case sensitivity</li>
+<li>(grep -i &ldquo;error&rdquo; logfile.txt) - Finds &ldquo;Error&rdquo;, &ldquo;error&rdquo; ,etc</li>
+<li>Can also be used in searching in the output of another command as shown in the next line</li>
+<li>ps aux | grep &ldquo;firefox&rdquo;</li>
+<li>(grep -v &ldquo;error&rdquo; logfile.txt) - Inverting the search ie exclude all lines that contain the pattern</li>
+<li>(grep -n &ldquo;command&rdquo; logfile.txt) - Shows the line numbers where &ldquo;command&rdquo; has appeared</li>
+<li>(grep -c &ldquo;error&rdquo; logfile.txt) - counts the number of lines containing &ldquo;error&rdquo;</li>
+<li>(grep &ldquo;^hello&rdquo; file.txt) - search for lines that start with &ldquo;hello&rdquo;</li>
+<li>(grep &ldquo;done$&rdquo; file.txt) - search for files that end with &ldquo;done&rdquo;</li>
+</ul>
+<h2>sort<span class="hx:absolute hx:-mt-20" id="sort"></span>
+    <a href="#sort" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used in sorting elements in a file</li>
+<li>(sort -r filename.txt) - Reverses the order of sorting</li>
+<li>Can work with pipes,i.e you can use it on the output of another command ls | sort</li>
+</ul>
+<h2>echo<span class="hx:absolute hx:-mt-20" id="echo"></span>
+    <a href="#echo" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>echo &ldquo;Hello world&rdquo; - prints a simple messsage</li>
+<li>name=&ldquo;John&rdquo;, echo &ldquo;Hello $name&rdquo; - This will print the value of variable</li>
+<li>echo &ldquo;Hello, file&rdquo; &gt; output.txt - This will direct the output to a file but will override the contents of that file</li>
+<li>echo &ldquo;Hello file&rdquo; &raquo; output.txt - This will append or add another line at the end of output.txt</li>
+<li>echo &ldquo;Today is $(date) - Using echo with other commands</li>
+</ul>
+<h2>chown<span class="hx:absolute hx:-mt-20" id="chown"></span>
+    <a href="#chown" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Every file/directory in linux has an owner</li>
+<li>This command is used to change the owner of the file or directory</li>
+<li>The owner of a directory/ file or the root user are eligible to use this command</li>
+<li>sudo chown astro test.txt - Transferring the file ownership to astro</li>
+<li>chown -R - Changing the ownership of a directory and all other files in it.</li>
+<li>chown : - Through this command,I can simulataneousy change the owner and the group of the file</li>
+<li>chgrp - Directly changing the group of the file</li>
+</ul>
+<h2>chmod<span class="hx:absolute hx:-mt-20" id="chmod"></span>
+    <a href="#chmod" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used to change the permissions of a file</li>
+<li>Every file has 3 permissions (read, write and execute)</li>
+<li>For example if a go into a directory and run ls -al, the following is displayed :<br>
+drwxrwxr-x 4 astro astro 4096 Feb 9 11:33 .<br>
+drwxr-x&mdash; 31 astro astro 4096 Feb 12 14:50 ..<br>
+drwxrwxr-x 8 astro astro 4096 Feb 13 12:32 .git<br>
+drwxrwxr-x 2 astro astro 4096 Feb 13 12:39 linux-basics<br>
+-rw-rw-r&ndash; 1 astro astro 163 Feb 9 11:32 README.md</li>
+<li>The letters and hyphens you see at the start of every file/folder are the permissions given of the file/folder</li>
+<li>(-) means its a normal file</li>
+<li>(d) means its a directory</li>
+<li>(l) means its a link</li>
+<li>After that, the first 3 values eg rwx represents the permissions of the owner of the file/directory</li>
+<li>The next 3 values eg r-x represents the permissions of the group of the file</li>
+<li>The last 3 values eg &mdash; represents the permissions of the other members or everyone else that comes across the file</li>
+<li>rwx means that person has read, write and execute permissions of the file/directory</li>
+<li>If either of the rwx values is swapped with - ,that means that person lacks the swapped permission eg :</li>
+<li>r-x means the person has read and execute permission but lacks the write permission</li>
+<li>You can change the permissions using the chmod command</li>
+<li>Changing permissions using numeric notation discussed below :<br>
+Each Permission has a numeric value :<br>
+r = 4<br>
+w = 2<br>
+x = 1</li>
+<li>chmod 755 file.txt - This command sets the owner : rwx (7), Group r-x (5) and others r-x (5)</li>
+<li>Changing the permissions using symbolic notation as shown below :<br>
+u = Owner<br>
+g = Group<br>
+o = Others</li>
+<li>chmod u+w file.txt - This adds the write permission to the Owner</li>
+<li>chmod g-x file.txt - This removes the execute permission from the group</li>
+<li>chmod o+r file.txt - This adds the read permission for others</li>
+</ul>
+<h2>du<span class="hx:absolute hx:-mt-20" id="du"></span>
+    <a href="#du" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>This command will calculate the size of a directory as a whole</li>
+<li>du * - This will calculate the size of each file individually</li>
+<li>du -m - Displaying the size in Megabytes</li>
+<li>du -g - Displaying the size in Gigabytes</li>
+<li>du -ah - -a wil print the size of each file, -h will show a human readable notation for sizes</li>
+</ul>
+<h2>df<span class="hx:absolute hx:-mt-20" id="df"></span>
+    <a href="#df" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used to get disk usage information</li>
+<li>Its basic form will print information about volumes mounted</li>
+<li>df -h will show the values in human readable format</li>
+</ul>
+<h2>ps<span class="hx:absolute hx:-mt-20" id="ps"></span>
+    <a href="#ps" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used to inspect processes that are running on your machine</li>
+<li>ps ax - &ldquo;a&rdquo; will list other users&rsquo; processes apart from yours and &ldquo;x&rdquo; will show other processes not linked to any terminal</li>
+<li>You can search for a specific process combining grep with a pipe as shown below :<br>
+ps ax | grep -i &ldquo;tensorflow&rdquo; | head</li>
+</ul>
+<h2>pstree<span class="hx:absolute hx:-mt-20" id="pstree"></span>
+    <a href="#pstree" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Command for displaying processes running on your system in a tree structure</li>
+</ul>
+<h2>top<span class="hx:absolute hx:-mt-20" id="top"></span>
+    <a href="#top" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used to display dynamic real time information about running processes in your machine</li>
+</ul>
+<h2>kill<span class="hx:absolute hx:-mt-20" id="kill"></span>
+    <a href="#kill" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Linux processes can receive signals and react to them therefore we can interact with running programs</li>
+<li>The kill command is used to terminate a program (kill ). The PID is the process ID</li>
+<li>We can use the kill command to send other signals apart from terminating a program as follows :<br>
+kill -HUP - hang up - It is sent automatically when a terminal window that started a process is closed before terminating the process<br>
+kill -INT - interrupt - It sends the same signal used when we press ctrl - c in the terminal, which usually terminates the process<br>
+kill -KILL - This is not sent to the process, but to the operating system which immediately stops but not terminate the process<br>
+kill -TERM - terminate - Its the default signal sent by kill<br>
+kill -CONT - continue - Used to resume a stopped process<br>
+kill -STOP - stop is sent to the operating system kernel which immediately stops but does not terminate the process</li>
+<li>You might see numbers used instead, like kill -1 . In this case,1 corresponds to HUP. 2 corresponds to INT. 9 corresponds to KILL. 15 corresponds to TERM. 18 corresponds to CONT. 15 corresponds to STOP.</li>
+</ul>
+<h2>type<span class="hx:absolute hx:-mt-20" id="type"></span>
+    <a href="#type" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>A command can be one of these 4 types :<br>
+an executable<br>
+a shell built-in program<br>
+a shell function<br>
+an alias</li>
+<li>The type command is used to figure out the type of a command</li>
+<li>type</li>
+</ul>
+<h2>which<span class="hx:absolute hx:-mt-20" id="which"></span>
+    <a href="#which" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>This will return the path of the command specified</li>
+</ul>
+<h2>man (manual)<span class="hx:absolute hx:-mt-20" id="man-manual"></span>
+    <a href="#man-manual" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>This command is used to display information about the specified command eg</li>
+<li>man which</li>
+</ul>
+<h2>whoami<span class="hx:absolute hx:-mt-20" id="whoami"></span>
+    <a href="#whoami" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>This command will print the user name currently logged into the terminal session</li>
+</ul>
+<h2>who<span class="hx:absolute hx:-mt-20" id="who"></span>
+    <a href="#who" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>This command displays the users logged in to the system</li>
+</ul>
+<h2>su<span class="hx:absolute hx:-mt-20" id="su"></span>
+    <a href="#su" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>This command is used to switch to another user</li>
+<li>su</li>
+</ul>
+<h2>sudo<span class="hx:absolute hx:-mt-20" id="sudo"></span>
+    <a href="#sudo" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used to run command as a root</li>
+<li>You must be enabled to use sudo and once you are authorised, you can run commands as root by entering your user&rsquo;s password</li>
+<li>You can use sudo to run commands as any user. root is the default but use the -u option to specify another user :<br>
+sudo -u astro ls /Users/flavio</li>
+</ul>
+<h2>passwd<span class="hx:absolute hx:-mt-20" id="passwd"></span>
+    <a href="#passwd" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Users in linux have a password assigned. You can change the password using the passwd command</li>
+<li>When you want to change your password, you can type :<br>
+passwd</li>
+<li>When you are root , you can set the username for which you want to change the password :<br>
+passwd</li>
+</ul>
+<h2>ping<span class="hx:absolute hx:-mt-20" id="ping"></span>
+    <a href="#ping" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>This command pings a specific network host, on the local network or on the internet</li>
+<li>Syntax is ping where could be a domain name or an IP address</li>
+<li>This command sends a request to the server and the server returns a response</li>
+<li>ping keeps sending the request every second by default. It will keep running until you stop it with ctrl - c unless you pass the number of times you want to try with the -c option: ping -c google.com</li>
+</ul>
+<h2>clear<span class="hx:absolute hx:-mt-20" id="clear"></span>
+    <a href="#clear" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Used to clear all the previous commands that were run in the current terminal</li>
+<li>The screen will clear</li>
+</ul>
+<h2>crontab<span class="hx:absolute hx:-mt-20" id="crontab"></span>
+    <a href="#crontab" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>Cron jobs are jobs that are scheduled to run at specific intervals. You might have a command perform something every hour, or every day, or every 2 weeks. Or on weekends.</li>
+<li>They are very powerful, especially when used on servers to perform maintenance and automations.</li>
+<li>crontab -l - exploring which cronjobs are defined by you</li>
+</ul>
+<h2>uname<span class="hx:absolute hx:-mt-20" id="uname"></span>
+    <a href="#uname" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li>This will return the Operating System codename eg Linux</li>
+<li>uname -mp - The m option shows the hardware name and the p option prints the processor architecture</li>
+<li>uname -a - This will print all the information available</li>
+</ul>
+<h2>References<span class="hx:absolute hx:-mt-20" id="references"></span>
+    <a href="#references" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><ul>
+<li><a href="https://www.freecodecamp.org/news/the-linux-commands-handbook/"target="_blank" rel="noopener">https://www.freecodecamp.org/news/the-linux-commands-handbook/</a></li>
+</ul>
+
+        </div>
+        <div class="hx:mt-16"></div>
+        <div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a
+        href="/docs/openssh/"
+        title="openssh"
+        class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:pr-4 hx:rtl:pl-4"
+      ><svg class="hx:inline hx:h-5 hx:shrink-0 hx:ltr:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>openssh</a><a
+        href="/docs/systemd/"
+        title="systemd"
+        class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:ml-auto hx:ltr:pl-4 hx:ltr:text-right hx:rtl:mr-auto hx:rtl:pr-4 hx:rtl:text-left"
+      >systemd<svg class="hx:inline hx:h-5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
+        
+      </main>
+    </article>
+  </div>
+
+      <footer class="hextra-footer hx:bg-gray-100 hx:pb-[env(safe-area-inset-bottom)] hx:dark:bg-neutral-900 hx:print:bg-transparent"><div class="hextra-custom-footer hextra-max-footer-width hx:pl-[max(env(safe-area-inset-left),1.5rem)] hx:pr-[max(env(safe-area-inset-right),1.5rem)] hx:text-gray-600 hx:dark:text-gray-400"></div><div
+      class="hextra-max-footer-width hx:mx-auto hx:flex hx:justify-center hx:py-12 hx:pl-[max(env(safe-area-inset-left),1.5rem)] hx:pr-[max(env(safe-area-inset-right),1.5rem)] hx:text-gray-600 hx:dark:text-gray-400 hx:md:justify-start"
+    >
+      <div class="hx:flex hx:w-full hx:flex-col hx:items-center hx:sm:items-start"><div class="hx:font-semibold"><a class="hx:flex hx:text-sm hx:items-center hx:gap-1 hx:text-current" target="_blank" rel="noopener noreferrer" title="Hextra GitHub Homepage" href="https://github.com/imfing/hextra">
+    <span>Powered by Hextra<svg height=1em class="hx:inline-block hx:ltr:ml-1 hx:rtl:mr-1 hx:align-[-2.5px]" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="m 105.50024,22.224647 c -9.59169,-5.537563 -21.40871,-5.537563 -31.000093,0 L 39.054693,42.689119 C 29.463353,48.226675 23.55484,58.460531 23.55484,69.535642 v 40.928918 c 0,11.07542 5.908513,21.3092 15.499853,26.84652 l 35.445453,20.46446 c 9.591313,5.53732 21.408404,5.53732 31.000094,0 l 35.44507,-20.46446 c 9.59131,-5.53732 15.49985,-15.7711 15.49985,-26.84652 V 69.535642 c 0,-11.075111 -5.90854,-21.308967 -15.49985,-26.846523 z M 34.112797,85.737639 c -1.384445,2.397827 -1.384445,5.352099 0,7.749927 l 24.781554,42.922974 c 1.38437,2.39783 3.942853,3.87496 6.711592,3.87496 h 49.563107 c 2.76905,0 5.3273,-1.47713 6.71144,-3.87496 l 24.78194,-42.922974 c 1.38414,-2.397828 1.38414,-5.3521 0,-7.749927 L 121.88049,42.814746 c -1.38414,-2.397828 -3.94239,-3.874964 -6.71144,-3.874964 H 65.605944 c -2.768739,0 -5.327223,1.477059 -6.711592,3.874964 z" style="stroke-width:0.774993" /></svg></span>
+  </a></div></div>
+    </div></footer>
+    
+    <script defer src="/js/main.js" integrity=""></script>
+<script defer src="/js/flexsearch.9f5b5908f93ae86f1ecd4b043b799f580c2d1654e703dd9357d568ac41b2547a.js" integrity="sha256-n1tZCPk66G8ezUsEO3mfWAwtFlTnA92TV9VorEGyVHo=" crossorigin="anonymous"></script>
+        <script defer src="/en.search.js" integrity=""></script>
+  </body>
+</html>

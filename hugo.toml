@@ -2,10 +2,20 @@ baseURL = 'https://Diing54.github.io/devops/'
 title = "Diing"
 theme = ["github.com/imfing/hextra"]
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [params]
-  description = "My Kasten"
-  # Hextra checks 'assets/' by default
+  description = "DevOps Engine Room"
   customCSS = ["css/custom.css"]
+
+  [params.navbar]
+    displayTitle = true
+    displayLogo = true
+    
+  [params.search]
+    enable = true
+    type = "flexsearch"
 
 [markup.goldmark.renderer]
   unsafe = true

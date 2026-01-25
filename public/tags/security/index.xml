@@ -1,0 +1,87 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Diing – Security</title>
+    <link>//:1313/tags/security/</link>
+    <description>Recent content in Security on Diing</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 23 Jan 2026 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="//:1313/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>openssh</title>
+      <link>//:1313/docs/openssh/</link>
+      <pubDate>Fri, 23 Jan 2026 00:00:00 +0000</pubDate>
+      
+      <guid>//:1313/docs/openssh/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;em&gt;Date: 2026-01-23&lt;/em&gt;
+&lt;div class=&#34;hx-flex hx-flex-wrap hx-gap-2 hx-mt-4&#34;&gt;
+  
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Intro&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;intro&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#intro&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;OpenSSH (Open Secure Shell) is a free, open-source toolset that allows for secure remote login and other secure network services over an insecure network i.e. the internet. It encrypts all traffic during a session and guarantees the integrity of data transfer&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;sshd - The OpenSSH server daemon&lt;/li&gt;
+&lt;li&gt;ssh - Short form for secure shell, provides a secure channel to the command shell on the remote system&lt;/li&gt;
+&lt;li&gt;scp - secure copy, for encrypted file transfer&lt;/li&gt;
+&lt;li&gt;sftp - secure file transfer protocol, provides file access&lt;/li&gt;
+&lt;li&gt;ssh-copy-id - a program for installing your public key to a remote SSH server&amp;rsquo;s authorized_keys file&lt;/li&gt;
+&lt;li&gt;ssh-keyscan - finds and collects public host keys on a network, saving time of looking for them manually&lt;/li&gt;
+&lt;li&gt;ssh-add - adds your identities to the authentication agent, ssh-agent&lt;/li&gt;
+&lt;li&gt;sshfs - Allows you to mount a remote filesystem using sftp&lt;/li&gt;
+&lt;li&gt;ssh-agent - a program that securely manages and stores your SSH private keys in memory, making it easier to authenticate with remote servers without repeatedly entering passphrases. This allows you to authenticate with SSH servers once and then use that authentication for multiple connections without needing to re-enter your key&amp;rsquo;s passphrase&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;OpenSSH supports different types of authentication;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Password authentication&lt;/strong&gt; - Uses your LInux login and password to authenticate. Simplest but vulnerable when your SSH session is infected with a keylogger which can capture your credentials.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Public key authentication&lt;/strong&gt; - This authenticates with your personal SSH public keys. You need to create and distribute your public keys and you can login only from machines that hold your private key&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Passphrase-less authentication&lt;/strong&gt; - Public key authentication without a passphrase. Useful for automated services like scripts and cron jobs&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are two different uses for authentication keys: host keys, which authenticate computers, and public keys, which authenticate users. SSH keys come in pairs, private and public.
+Transmissions are encrypted with the public key and decrypted with the private key, a brilliantly simple scheme. You can safely distribute your public keys as much as you want, while you must protect your private key and not let anyone else have it.&lt;/p&gt;
+&lt;p&gt;Server and client are defined by the direction of the transaction. The server has the SSH daemon running and listening for connection requests, and the client is anyone logging in to this machine via SSH.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;sudo ssh-keygen -A&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ssh-keygen: generating new host keys: RSA DSA ECDSA ED25519&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;server’s private host keys are owned by root, read-only&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;public keys, which are owned by root, read-write for root, and read-only for everyone else&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now take a look at /etc/ssh/sshd_config. When you change this file(Uncomment the options you want to use or change.), reload sshd to load your changes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$ sudo systemctl reload sshd.server&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Any port scanner will find your open ports, and attackers will attempt brute force
+password cracking. Attackers still target the default SSH port 22 the most. Changing the port won’t reduce this risk very much, but it should reduce the number of entries in your log files. When you use alternate port numbers, first look in /etc/services to find unused ports, and then record the ports you use in this file.&lt;/p&gt;
+&lt;p&gt;Public key authentication is very strong and cannot be brute-forced like password logins (see Recipe 12.7). The trade-off is less convenience, as you can log in only from machines that have your private key.&lt;/p&gt;
+&lt;h2&gt;References&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;references&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#references&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>
