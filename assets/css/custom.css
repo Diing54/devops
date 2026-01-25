@@ -174,3 +174,63 @@ aside a:hover, .hx-text-primary-600 {
     width: 100% !important;
     min-width: 100% !important;
 }
+
+/* =========================================
+   MOBILE FIXES & CLEANUP
+   ========================================= */
+
+/* 1. HIDE SIDEBAR SEARCH (Hamburger Menu) */
+/* This removes the duplicate search bar inside the slide-out menu */
+.hextra-sidebar-container .hextra-search-wrapper,
+aside .hextra-search-wrapper {
+    display: none !important;
+}
+
+/* 2. RESPONSIVE NAVBAR SEARCH WIDTH */
+/* Desktop: Keep it wide (400px) */
+@media (min-width: 768px) {
+    .hextra-search-wrapper {
+        width: 400px !important;
+    }
+}
+
+/* Mobile: Shrink it to fit the phone screen */
+@media (max-width: 767px) {
+    .hextra-search-wrapper {
+        width: 100% !important;
+        max-width: 180px !important; /* Prevents overlap with logo/hamburger */
+        margin-right: 0.5rem;
+    }
+    
+    /* Make text smaller on mobile so "Search ...." fits */
+    .hextra-search-input {
+        font-size: 12px !important;
+        padding: 6px !important;
+    }
+}
+
+/* =========================================
+   MOBILE SEARCH FIXES
+   ========================================= */
+
+/* 1. REMOVE Search from Hamburger Menu (Sidebar) */
+/* We target the search wrapper specifically inside the mobile drawer */
+.hextra-sidebar-container .hextra-search-wrapper,
+aside .hextra-search-wrapper {
+    display: none !important;
+}
+
+/* 2. FIX Navbar Search Functionality */
+/* Ensure the Navbar search is strictly visible and sits "on top" so it is clickable */
+nav .hextra-search-wrapper {
+    display: block !important;
+    z-index: 9999 !important; /* Forces it above other elements */
+    pointer-events: auto !important; /* Ensures touches/clicks register */
+}
+
+/* 3. FIX Results Dropdown Layering */
+/* Ensure the dropdown list appears above the page content on mobile */
+.hextra-search-results {
+    z-index: 10000 !important;
+    max-height: 50vh !important; /* Prevents it from being too tall on phone screens */
+}
