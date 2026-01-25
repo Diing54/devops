@@ -131,6 +131,19 @@ Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Pr
 
 2. Dynamic routing - Routers create and update routing tables at runtime based on actual network conditions. They attempt to find the fastest path from the source to the destination by using a dynamic routing protocol, which is a set of rules that create, maintain and update the dynamic routing table. Its biggest advantage is that it adapts to changing network conditions e.g. traffic volume, bandwidth and network failure.
 
+### DNS
+
+- A Domain Name System translates domain names into IP addresses which allows browsers to access websites or any other internet resources.
+
+### Working process of DNS
+
+1. User input - A user enters a website address e.g www.archlinux.org into their browser
+2. Local cache check - The browser checks its local cache to see if it has looked up the address recently. If it finds the address, it is uses that directly without querying external servers.
+3. Hosts file check - This is a file that is stored locally that maps domain names to IP addresses.
+4. DNS resolver query - If IP address is not found locally, the computer send a request to a DNS resolver, also known as recursive resolver. It is provided by the ISP or network settings. Its like asking a Librarian about a particular book and the librarian goes to search for the book. It can be google (8.8.8.8) or cloudfare.
+
+
+
 
 ## References
 - https://www.geeksforgeeks.org/computer-networks/open-systems-interconnection-model-osi/
