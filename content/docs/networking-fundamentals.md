@@ -141,6 +141,10 @@ Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Pr
 2. Local cache check - The browser checks its local cache to see if it has looked up the address recently. If it finds the address, it is uses that directly without querying external servers.
 3. Hosts file check - This is a file that is stored locally that maps domain names to IP addresses.
 4. DNS resolver query - If IP address is not found locally, the computer send a request to a DNS resolver, also known as recursive resolver. It is provided by the ISP or network settings. Its like asking a Librarian about a particular book and the librarian goes to search for the book. It can be google (8.8.8.8) or cloudfare.
+5. Root DNS server - The resolver sends the request to a root DNS server. The root server doesn't know exactly the IP address for the domain but knows which Top-Level Domain (TLD) server to query based on the domain's extension e.g. .edu
+6. TLD server - The TLD server for lets say .edu directs the resolver to the authoritative DNS server for the domain.
+7. Authoritative DNS server - This server holds the actual DNS records for the domain, including the IP address for the website's server. It sends the IP address back to the resolver.
+8. Final response - The DNS resolver sends the IP address back to the computer, allowing it to connect to the website's server and loads the page.
 
 
 
@@ -149,4 +153,5 @@ Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Pr
 - https://www.geeksforgeeks.org/computer-networks/open-systems-interconnection-model-osi/
 - https://www.cloudflare.com/en-in/learning/network-layer/what-is-a-computer-port/
 - https://aws.amazon.com/what-is/routing/#:~:text=Routing%20is%20the%20process%20of,place%20through%20many%20different%20paths
+- https://www.geeksforgeeks.org/computer-networks/domain-name-system-dns-in-application-layer/
 
