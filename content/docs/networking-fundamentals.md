@@ -152,22 +152,41 @@ Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Pr
  1. Prevent unauthorized access - Only trusted users and traffic are allowed through.
  2. Block malicious traffic - Harmful data such as viruses, phishing attempts or denial-of-service attacks are stopped before reaching the system.
  
-## Working of a firewall
+### Working of a firewall
 1. All data packets entering or leaving the network must first pass through the firewall
 2. The firewall examines each packet against predefined rules set by the organisation
 3. If the packet matches safe rules, it is allowed through, if it is suspicious, it's blacklisted, or if it contains malicious content, it's blocked.
 4. Blocked or unusual traffic is recorded in logs and real-time alerts may be generated
 - A firewall needs a default action (accept, reject or drop) for traffic not covered by rules.
 
-## Types of firewalls
+### Types of firewalls
 1. Network firewalls 
 2. Host-based firewalls
 
+## Network Address Translation (NAT)
+- NAT allows multiple devices in a private network to access the internet using a single public IP address. It helps conserve IPv4 addresses and hides internal systems for added security.
+1. Translates private IPs to public IPs and vice versa.
+2. Prevents IPv4 address exhaustion.
+3. Adds security by masking internal devices.
+4. Allows thousands of devices to share one public IP
+
+### Working of NAT
+1. A device sends a request and it reaches the NAT-enabled router
+2. The router replaces the private IP with its public IP and assigns a unique port
+3. NAT stores this mapping in its NAT table
+4. When the server responds, NAT uses the stored entry to send the packet to the correct internal device
+
+- Many devices can share one public IP
+- Port numbers separate device traffic
+- Internal IPs stay hidden from the internet
 
 
+
+- *"NAT is the reason the internet didn't run out of addresses 20 years ago"*
 ## References
 - https://www.geeksforgeeks.org/computer-networks/open-systems-interconnection-model-osi/
 - https://www.cloudflare.com/en-in/learning/network-layer/what-is-a-computer-port/
 - https://aws.amazon.com/what-is/routing/#:~:text=Routing%20is%20the%20process%20of,place%20through%20many%20different%20paths
 - https://www.geeksforgeeks.org/computer-networks/domain-name-system-dns-in-application-layer/
 - https://www.geeksforgeeks.org/computer-networks/introduction-of-firewall-in-computer-network/
+- https://www.geeksforgeeks.org/computer-networks/network-address-translation-nat/
