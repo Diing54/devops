@@ -146,6 +146,22 @@ Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Pr
 7. Authoritative DNS server - This server holds the actual DNS records for the domain, including the IP address for the website's server. It sends the IP address back to the resolver.
 8. Final response - The DNS resolver sends the IP address back to the computer, allowing it to connect to the website's server and loads the page.
 
+## Firewalls
+- A firewall is a network security system, hardware or software, that monitors and controls incoming and outgoing traffic based on rules set by the organization.
+- This is the first line of defence in cybersecurity, acting as a barrier between internal systems and external networks. Data packets are monitored, filtered and either allowed or blocked based on predefined rules. They are essential because they;
+ 1. Prevent unauthorized access - Only trusted users and traffic are allowed through.
+ 2. Block malicious traffic - Harmful data such as viruses, phishing attempts or denial-of-service attacks are stopped before reaching the system.
+ 
+## Working of a firewall
+1. All data packets entering or leaving the network must first pass through the firewall
+2. The firewall examines each packet against predefined rules set by the organisation
+3. If the packet matches safe rules, it is allowed through, if it is suspicious, it's blacklisted, or if it contains malicious content, it's blocked.
+4. Blocked or unusual traffic is recorded in logs and real-time alerts may be generated
+- A firewall needs a default action (accept, reject or drop) for traffic not covered by rules.
+
+## Types of firewalls
+1. Network firewalls 
+2. Host-based firewalls
 
 
 
@@ -154,4 +170,4 @@ Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Pr
 - https://www.cloudflare.com/en-in/learning/network-layer/what-is-a-computer-port/
 - https://aws.amazon.com/what-is/routing/#:~:text=Routing%20is%20the%20process%20of,place%20through%20many%20different%20paths
 - https://www.geeksforgeeks.org/computer-networks/domain-name-system-dns-in-application-layer/
-
+- https://www.geeksforgeeks.org/computer-networks/introduction-of-firewall-in-computer-network/
