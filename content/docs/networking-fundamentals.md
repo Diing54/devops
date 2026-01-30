@@ -182,7 +182,7 @@ Suppose Bob transfers an MP3 audio recording to Alice using the File Transfer Pr
 
 
 
-- *"NAT is the reason the internet didn't run out of addresses 20 years ago"*
+ *"NAT is the reason the internet didn't run out of addresses 20 years ago"*
 ## References
 - https://www.geeksforgeeks.org/computer-networks/open-systems-interconnection-model-osi/
 - https://www.cloudflare.com/en-in/learning/network-layer/what-is-a-computer-port/
