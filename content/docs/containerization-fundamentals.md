@@ -60,7 +60,8 @@ This is a feature of the linux kernel that enables the separation and isolation 
 | **IPC** | Shared memory | Prevents processes in different namespaces from accessing each other's inter-process communication resources. |
 | **USER** | User IDs | Maps a user inside the namespace to a different user on the host (e.g., root in a container is a non-root user on the host). |
 
-
+## Introduction to Docker
+In my words, I can say that docker automates the development of a container and adds other features such images, portable packaging and a friendly interface for manipulating these containers.
 
 ## References
 - https://www.redhat.com/en/topics/containers/whats-a-linux-container
