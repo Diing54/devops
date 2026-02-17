@@ -100,6 +100,7 @@ A Docker Repository is a collection of related images with same name but differe
 * docker start {containerID} ---> start one or more stopped containers
 * docker stop {containerID} ---> stops the running process of the container
 * docker ps -a ---> list all containers whether running or stopped
+* docker build -t {name}:{version/tag} {directory where the dockerfile is} ---> builds the docker image from Dockerfile.
 
 - Instead of containerID, we can use the container names on the above commands.
 
