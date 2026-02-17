@@ -75,8 +75,7 @@ Docker is a virtualization tool and here are the differences between it and a Vi
 3. Containers spin up faster while VMs takes minutes because they have to load up a whole OS.
 4. Docker has compatibility issues with different OS's while VM's are not affected. Docker desktop fixes these compatibilty issues on Docker because it is originally linux-based.
 
-![linux](../../Excalidraw/VMsvsContainers.svg)
-
+![VMs vs Containers](/images/VMsvsContainers.svg)
 
 To install docker docker on my arch-based machine I used the following command;
 
