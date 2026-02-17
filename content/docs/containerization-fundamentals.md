@@ -80,7 +80,7 @@ Docker is a virtualization tool and here are the differences between it and a Vi
 To install docker docker on my arch-based machine I used the following command;
 
 ```bash
-sudo pacman -Syu docker
+sudo pacman -S docker
 ```
 - This installs the docker service in the machine which need to be started and enabled so it starts on boot.
 
@@ -103,8 +103,29 @@ A Docker Repository is a collection of related images with same name but differe
 
 - Instead of containerID, we can use the container names on the above commands.
 
+### Port Binding
+This is the process of mapping a port on the host machine to a port within the docker container. This allows external traffic to access network services running inside the isolated container. Here is how it is configured;
 
- 
+```bash
+docker run -p {host port:container port} -d nginx
+```
+
+* -p flag specifies the format host port:container port.
+* -d flag runs the container in detached (background) mode. 
+
+It is recommended to map the same port for the host machine and the container.
+
+### Dockerfile
+This is a plain text document that contains a series of commands or instructions which the docker engine reads and executes to create a docker image.
+
+Dockerfiles start from base image ---> this is an existing image that your image will be based on.
+
+#### Structure of Dockerfile
+* FROM ---> Builds the image from a specified image.
+* RUN ---> This will execute any command in a shell inside the container environment.
+* COPY ---> This will copy application files from the host into the container.
+* WORKDIR ---> This sets the working directory for all following commands.
+* CMD ---> This is the instruction that is to be executed when docker container starts.
 
 
 
