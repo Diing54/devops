@@ -128,7 +128,7 @@ Dockerfiles start from base image ---> this is an existing image that your image
 * WORKDIR ---> This sets the working directory for all following commands.
 * CMD ---> This is the instruction that is to be executed when docker container starts.
 
-
+*NOTE:* A Docker image consists of layers. Each instruction from the Dockerfile creates one layer. These layers are stacked and each one is a delta of the changes from the previous layer.
 
 
 
