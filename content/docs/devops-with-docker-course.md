@@ -29,7 +29,8 @@ Docker offers tools to enable interaction between containeres.
 An image provides all the necessary instructions and dependencies for the container to run. A docker image is a file that is **immutable**, meaning it cannot be changed or edited. Creating a new image happens by starting from a base image and adding new layers to it.
 
 - `docker images` or `docker image ls` ---> List all your images.
-
+- `docker pull {name}:{tag}` ---> Pull or download an image from the registry if not available locally.
+- `docker rmi {name}:{tag}` ---> Delete image.
 An image file is built from a file named **Dockerfile** and it looks like this by default
 
 ```Dockerfile
@@ -41,12 +42,17 @@ CMD <command that is executed on `docker run container`>
 ```
 A Dockerfile is the instruction set for building an image.
 
-- `docker build -t {name}:{version/tag} {directory where the Dockerfile is}` ---> builds the docker image from the Dockerfile.
+- `docker build -t {name}:{version/tag} {directory where the Dockerfile is}` ---> Builds the docker image from the Dockerfile.
 
 Containers contain the application and what is required to execute it. They are isolated environments in the host machine with the ability to interact with each other and the host machine itself.
 
-- `docker ps` ---> list all running containers
-- `docker ps -a` ---> list all containers whether running or stopped
+- `docker ps` ---> List all running containers.
+- `docker ps -a` ---> List all containers whether running or stopped.
+- `docker run {name}:{tag}` ---> Creates a container from a given image and starts it. If not found locally, the image will automatically be pulled from the registry. 
+- `docker logs {containerID}` ---> View logs of the service running inside the container which are present at the time of execution.
+- `docker start {containerID}` ---> Start one or more stopped containers.
+- `docker stop {containerID}` ---> Stop the running process of a container.
+- `docker rm {containerID}` ---> Delete container
 
-
+For the above commands, container name can be used instead of container ID.
 ## References
