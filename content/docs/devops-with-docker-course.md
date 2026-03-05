@@ -17,14 +17,19 @@ This is my summary/takeaway from a free Docker course provided by [The Universit
 Docker offers tools to enable interaction between containeres.
 
 ## Benefits of Containers
-1. *Solves the "Works on my Machine" Problem* ---> Developers can run an application inside a container, which packages everything needed for it to run including its source code.
+1. **Solves the "Works on my Machine" Problem** ---> Developers can run an application inside a container, which packages everything needed for it to run including its source code.
 
-2. *Isolated Environments* ---> With containers, it's possible to run different applications on the same machine even if they require different version of same dependencies for them to run. Each application is packaged on its own container with its requirements. Without containers, running them side by side would be a disaster.
+2. **Isolated Environments** ---> With containers, it's possible to run different applications on the same machine even if they require different version of same dependencies for them to run. Each application is packaged on its own container with its requirements. Without containers, running them side by side would be a disaster.
 
-3. *Development* ---> Containers ease up development processes. Lets say you are brought into a team developing a web application that uses multiple services like posgres database, redis e.t.c, with a few commands, you can spin up containers running these services instead of installing them manually on your machine.
+3. **Development** ---> Containers ease up development processes. Lets say you are brought into a team developing a web application that uses multiple services like posgres database, redis e.t.c, with a few commands, you can spin up containers running these services instead of installing them manually on your machine.
 
-4. *Scaling* ---> With advanced tooling, we can spin up multiple containers instantly and load balance traffic between them. This is useful for applications with higher demands. 
+4. **Scaling** ---> With advanced tooling, we can spin up multiple containers instantly and load balance traffic between them. This is useful for applications with higher demands. 
 
+## Images and Containers
+An image provides all the necessary instructions and dependencies for the container to run. A docker image is a file that is **immutable**, meaning it cannot be changed or edited. Creating a new image happens by starting from a base image and adding new layers to it.
 
+An image file is built from a file named **Dockerfile**.
+
+Containers contain the application and what is required to execute it. They are isolated environments in the host machine with the ability to interact with each other and the host machine itself.
 
 ## References
