@@ -8,11 +8,11 @@ tags: ["devops","docker","linux"]
 {{< tags >}}
 
 ## Intro
-This is my summary/takeaway from a free Docker course provided by [The University of Helsinki MOOC Centre](https://courses.mooc.fi/org/uh-cs/courses/devops-with-docker).
+This is my summary/takeaway from a free Docker course provided by **[The University of Helsinki MOOC Centre](https://courses.mooc.fi/org/uh-cs/courses/devops-with-docker)**.
 
-*Docker* ---> A set of tools used to deliver software in containers.
+**Docker** ---> A set of tools used to deliver software in containers.
 
-*Containers* are packages of software. They are isolated so that they don't interfere with each other or the software running outside them.
+**Containers** are packages of software. They are isolated so that they don't interfere with each other or the software running outside them.
 
 Docker offers tools to enable interaction between containeres.
 
@@ -28,8 +28,25 @@ Docker offers tools to enable interaction between containeres.
 ## Images and Containers
 An image provides all the necessary instructions and dependencies for the container to run. A docker image is a file that is **immutable**, meaning it cannot be changed or edited. Creating a new image happens by starting from a base image and adding new layers to it.
 
-An image file is built from a file named **Dockerfile**.
+- `docker images` or `docker image ls` ---> List all your images.
+
+An image file is built from a file named **Dockerfile** and it looks like this by default
+
+- ```Dockerfile
+FROM <image>:<tag>
+
+RUN <install some dependencies>
+
+CMD <command that is executed on `docker run container`>
+```
+A Dockerfile is the instruction set for building an image.
+
+- `docker build -t {name}:{version/tag} {directory where the Dockerfile is}` ---> builds the docker image from the Dockerfile.
 
 Containers contain the application and what is required to execute it. They are isolated environments in the host machine with the ability to interact with each other and the host machine itself.
+
+- `docker ps` ---> list all running containers
+- `docker ps -a` ---> list all containers whether running or stopped
+
 
 ## References
