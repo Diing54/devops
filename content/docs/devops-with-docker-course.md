@@ -32,7 +32,7 @@ An image provides all the necessary instructions and dependencies for the contai
 
 An image file is built from a file named **Dockerfile** and it looks like this by default
 
-- ```Dockerfile
+```Dockerfile
 FROM <image>:<tag>
 
 RUN <install some dependencies>
